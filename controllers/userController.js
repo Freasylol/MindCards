@@ -83,7 +83,7 @@ class UserController {
         // sendEmail('sashakorostelev49@gmail.com', 'Two-factor authentication Message', String(random4Digit));
         // console.log(String(random4Digit));
         // myVar.setMyVariable(String(random4Digit));
-        return res.json({password});
+        // return res.json({password});
         return res.json(token);
     }
 
