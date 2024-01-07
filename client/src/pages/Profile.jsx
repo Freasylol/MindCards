@@ -3,6 +3,7 @@ import {makeStyles} from '@material-ui/core';
 import { Context } from '../index';
 import {observer} from 'mobx-react-lite';
 import ObjectItem from './ObjectItem';
+import EditableField from './EditableField';
 // import Menu from './Menu';
 
 const useStyles = makeStyles((theme) => ({
@@ -32,6 +33,9 @@ const useStyles = makeStyles((theme) => ({
         color: '#0A092E',
         fontSize: '24px'
     },
+    // editButton: {
+        
+    // }
 }))
 
 const Profile = observer(() => {
@@ -39,27 +43,24 @@ const Profile = observer(() => {
 
     const {user} = useContext(Context); 
 
-    // let userMod = user.user.credits.map(obj => {
-    //     let {first_name, last_name, email, password} = obj;
-    //     return {first_name, last_name, email, password};
-    // })
-
     console.log(user.user);
-
-    // let a = user.user;
    
     let a = {
         first_name: user.user.first_name,
         last_name: user.user.last_name,
         email: user.user.email,
-        password: user.user.password
+        // password: user.user.password,
+        password: user.user.decryptedPassword
     }
 
     console.log(a);
 
     return (
-        <div className={classes.test}>    
-            <ObjectItem key={user.user.id} message={'Profile'} object={a}></ObjectItem>    
+        <div className={classes.test}>  
+            <EditableField header="First Name" text={user.user.first_name} field="first_name"></EditableField>
+            <EditableField header="Last Name" text={user.user.last_name} field="last_name"></EditableField>
+            <EditableField header="Email" text={user.user.email} field="email"></EditableField>
+            <EditableField header="Password" text={user.user.decryptedPassword} field="password"></EditableField>
         </div>
     )
 })

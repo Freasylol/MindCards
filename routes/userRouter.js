@@ -4,6 +4,7 @@ const userController = require('../controllers/userController');
 const checkAuthMiddleware = require('../middleware/checkAuthMiddleware');
 
 router.get('/', userController.getAll);
+router.put('/editUser', userController.editUser);
 router.post('/verify', userController.verify);
 router.post('/login', userController.login);
 router.get('/auth', checkAuthMiddleware, userController.check)

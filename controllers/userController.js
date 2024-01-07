@@ -49,6 +49,31 @@ class UserController {
         return await User.findAll().then(type => res.json(type));
     }
 
+    async editUser(req, res) {
+        const {id, first_name, last_name, email, password} = req.body;
+        const user = await User.findOne({where: {id}})
+        if (first_name) {
+            console.log(first_name);
+            user.first_name = first_name;
+        }
+        if (last_name) {
+            console.log(last_name);
+            user.last_name = last_name;
+        }
+        if (email) {
+            console.log(email);
+            user.email = email;
+        }
+        if (password) {
+            const hashPassword = await bcrypt.hash(password, 5);
+            console.log(hashPassword);
+            user.password = hashPassword;
+        }
+        await user.save();
+        const token = generateJwt(user.id, user.email, 1);
+        return res.json(token);
+    }
+
     async createOne(req, res, next) {
         const {first_name, last_name, email, password, roleId} = req.body;
         // const newUser = await User.findOne({where: {email}});

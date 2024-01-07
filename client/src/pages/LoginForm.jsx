@@ -107,6 +107,7 @@ const LoginForm = observer(() => {
             localStorage.setItem('token', token)
             user.setIsAuth(true);
             const userData = await Axios.get(`http://localhost:3001/api/user/${jwtData.id}`);
+            userData.data.decryptedPassword = password;
             user.setUser(userData.data);
         } catch(error) {
             console.log(error);
