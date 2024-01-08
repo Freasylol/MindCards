@@ -5,7 +5,6 @@ const ObjectItem = (({message, object}) => {
             {Object.keys(object).map(key => {
                 return <div key={key}>
                     <pre>{key}: {object[key]}</pre>
-                    
                 </div>
             })}
         </div>

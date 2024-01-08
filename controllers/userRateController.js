@@ -5,6 +5,17 @@ class UserRateController {
         return await UserRate.findAll().then(type => res.json(type));
     }
 
+    async getCardsByCardSet(req, res) {
+        const cardSetId = Number(req.params.cardSetId)
+        const userRate = await UserRate.findAll({
+            where: {
+                cardSetId: cardSetId
+            },
+            order: [['id', 'ASC']]
+        })
+        return res.json(userRate);
+    }
+
     async createOne(req, res) {
         const {grade, userId, cardSetId} = req.body;
         const userRate = await UserRate.create({grade, userId, cardSetId});

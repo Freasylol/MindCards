@@ -2,7 +2,14 @@ const {Card} = require('../models/models');
 
 class CardController {
     async getAll(req, res) {
-        return await Card.findAll().then(type => res.json(type));
+        // const orderedList = await models.YourModel.findAll({
+        //     order: [['id', 'ASC']], // Сортировка по возрастанию id
+        //   });
+      
+        return await Card.findAll({
+            order: [['id', 'ASC']],
+        }
+        ).then(type => res.json(type));
     }
 
     async getCardsByCardSet(req, res) {
@@ -10,7 +17,8 @@ class CardController {
         const card = await Card.findAll({
             where: {
                 cardSetId: cardSetId
-            }
+            },
+            order: [['id', 'ASC']]
         })
         return res.json(card);
     }

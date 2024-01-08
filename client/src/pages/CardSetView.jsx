@@ -6,7 +6,7 @@ import ObjectItem from './ObjectItem';
 import CardSetItem from './CardSetItem';
 import Axios from 'axios';
 import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
-import CardSetPassSlider from './CardSetPassSlider';
+import CardSetViewSlider from './CardSetViewSlider';
 
 const useStyles = makeStyles((theme) => ({
     test: {
@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-const CardSetPass = observer(() => {
+const CardSetView = observer(() => {
     const classes = useStyles();
 
     const [content, setContent] = useState('');
@@ -50,11 +50,11 @@ const CardSetPass = observer(() => {
     return (
         <div className={classes.test}>  
             <div>
-                CardSetPass
-                <CardSetPassSlider></CardSetPassSlider>
+                CardSetView
+                <CardSetViewSlider></CardSetViewSlider>
             </div>
         </div>
     )
 })
 
-export default CardSetPass
+export default CardSetView

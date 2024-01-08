@@ -31,7 +31,18 @@ export default class DeviceStore {
         this._cards = [
 
         ];
+
+        this._currentCardSetId = 1;
+        this._userRates = [];
         makeAutoObservable(this)
+    }
+
+    setUserRates(userRates) {
+        this._userRates = userRates;
+    }
+
+    setCurrentCardSetId(currentCardSetId) {
+        this._currentCardSetId = currentCardSetId;
     }
 
     setDeposits(deposits) {
@@ -64,6 +75,14 @@ export default class DeviceStore {
 
     setCardSetsBuffer(cardSetsBuffer) {
         this._cardSetsBuffer = cardSetsBuffer;
+    }
+
+    get userRates() {
+        return this._userRates;
+    }
+
+    get currentCardSetId() {
+        return this._currentCardSetId;
     }
 
     get cardSetsBuffer() {

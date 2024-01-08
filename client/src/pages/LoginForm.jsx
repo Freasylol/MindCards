@@ -109,6 +109,8 @@ const LoginForm = observer(() => {
             const userData = await Axios.get(`http://localhost:3001/api/user/${jwtData.id}`);
             userData.data.decryptedPassword = password;
             user.setUser(userData.data);
+            const usersData = await Axios.get(`http://localhost:3001/api/user`);
+            user.setUsers(usersData.data);
             const cardSetsData = await Axios.get(`http://localhost:3001/api/cardSet/findByUserId/${user.user.id}`);
             object.setCardSets(cardSetsData.data);
             console.log(cardSetsData.data);

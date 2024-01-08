@@ -7,6 +7,7 @@ import CardSetItem from './CardSetItem';
 import Axios from 'axios';
 import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
 import CardSetPassSlider from './CardSetPassSlider';
+import LogItem from './LogItem';
 
 const useStyles = makeStyles((theme) => ({
     test: {
@@ -38,23 +39,34 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-const CardSetPass = observer(() => {
+const CardSetLeaderBoard = observer(() => {
     const classes = useStyles();
+
+    const {object} = useContext(Context);
+    const {user} = useContext(Context);
 
     const [content, setContent] = useState('');
     const [contentState, setContentState] = useState('');
 
- 
-    const {object} = useContext(Context);
+    const getUserNameById = (userId) => {
+        for (let i = 0; i < user.users.length; i++) {
+            if (userId === user.users[i].id) {
+                return user.users[i].first_name;
+            }
+            
+        } 
+    }
 
     return (
-        <div className={classes.test}>  
+        <div className={classes.test}>
             <div>
-                CardSetPass
-                <CardSetPassSlider></CardSetPassSlider>
+                Leaderboard
+                {object.userRates.map((userRate, index) => {
+                    return <LogItem key={userRate.id} message1={String(userRate.grade)} message2={getUserNameById(userRate.userId)}></LogItem>
+                })}
             </div>
         </div>
     )
 })
 
-export default CardSetPass
+export default CardSetLeaderBoard

@@ -10,9 +10,8 @@ import CardSetPassSlider from './CardSetPassSlider';
 
 const useStyles = makeStyles((theme) => ({
     test: {
-        paddingTop: '50px',
+        paddingTop: '10px',
         backgroundColor: '#0A092E',
-        height: '90vh',
         color: '#F6F7FB'
     }, 
     signUpButton: {
@@ -38,23 +37,20 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-const CardSetPass = observer(() => {
+const LogItem = observer(({message1, message2}) => {
     const classes = useStyles();
 
     const [content, setContent] = useState('');
     const [contentState, setContentState] = useState('');
-
  
     const {object} = useContext(Context);
 
     return (
-        <div className={classes.test}>  
-            <div>
-                CardSetPass
-                <CardSetPassSlider></CardSetPassSlider>
-            </div>
+        <div style={{display: 'flex'}} className={classes.test}>
+            <div>{message1}</div>
+            <div style={{marginLeft: '10px'}}>{message2}</div>
         </div>
     )
 })
 
-export default CardSetPass
+export default LogItem
