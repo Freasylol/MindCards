@@ -6,6 +6,7 @@ import ObjectItem from './ObjectItem';
 import CardSetItem from './CardSetItem';
 import Axios from 'axios';
 import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
+import CardSetPassSlider from './CardSetPassSlider';
 
 const useStyles = makeStyles((theme) => ({
     test: {
@@ -32,9 +33,12 @@ const useStyles = makeStyles((theme) => ({
         color: '#0A092E',
         fontSize: '24px'
     },
+    testStyle: {
+        color: '#fff'
+    },
 }))
 
-const CardSet = observer(() => {
+const CardSetPass = observer(() => {
     const classes = useStyles();
 
     const [content, setContent] = useState('');
@@ -50,20 +54,16 @@ const CardSet = observer(() => {
     // start();
 
 
-    const handleClick = async(e) => {
-        console.log(contentState);
-        if (contentState === 'answer') {
-            setContent('ball');
-            setContentState('answer');
-        } else if (contentState === '' || contentState === 'question') {
-            setContent('мяч');
-            setContentState('question');
-        }  
-    }
-
-    const test = async(e) => {
-        window.location.replace('http://localhost:3000');
-    }
+    // const handleClick = async(e) => {
+    //     console.log(contentState);
+    //     if (contentState === 'answer') {
+    //         setContent('ball');
+    //         setContentState('answer');
+    //     } else if (contentState === '' || contentState === 'question') {
+    //         setContent('мяч');
+    //         setContentState('question');
+    //     }  
+    // }
  
     const {object} = useContext(Context);
 
@@ -71,16 +71,22 @@ const CardSet = observer(() => {
         <div className={classes.test}>
              {/* {content} */}   
             <div>
-                <button onClick={test}>test</button>
-                <NavLink to="/createCardSet">
+                CardSetPass
+                {/* <NavLink to="/createCardSet">
                     <button>New CardSet</button>
-                </NavLink>
-                {object.cardSets.map(cardSet => {
-                    return <CardSetItem key={cardSet.id} cardSetOrder={cardSet.id}  message={'Deposit'} cardSetObject={cardSet}></CardSetItem>
-                })}
+                </NavLink> */}
+                {/* {object.cardSets.map(cardSet => {
+                        return <CardSetItem key={cardSet.id} message={'Deposit'} object={cardSet}></CardSetItem>
+                })} */}
+                <div>
+                <CardSetPassSlider></CardSetPassSlider>
+                    {/* {object.cards.map(card => {
+                        return <CardSetPassSlider key={card.accountId} message={'BankAccount'} cardObject={card}></CardSetPassSlider>
+                    })} */}
+                </div>
             </div>
         </div>
     )
 })
 
-export default CardSet
+export default CardSetPass

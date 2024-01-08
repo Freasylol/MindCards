@@ -22,6 +22,15 @@ export default class DeviceStore {
         ]
         this._transactions = [
         ];
+        this._cardSets = [
+            
+        ];
+        this._cardSetsBuffer = [
+
+        ];
+        this._cards = [
+
+        ];
         makeAutoObservable(this)
     }
 
@@ -44,6 +53,22 @@ export default class DeviceStore {
     setTransactions(transactions) {
         this._transactions = transactions;
     }
+    
+    setCardSets(cardSets) {
+        this._cardSets = cardSets
+    }
+
+    setCards(cards) {
+        this._cards = cards;
+    }
+
+    setCardSetsBuffer(cardSetsBuffer) {
+        this._cardSetsBuffer = cardSetsBuffer;
+    }
+
+    get cardSetsBuffer() {
+        return this._cardSetsBuffer;
+    }
 
     get deposits() {
         return this._deposits
@@ -63,5 +88,13 @@ export default class DeviceStore {
 
     get transactions() {
         return this._transactions;
+    }
+
+    get cardSets() {
+        return this._cardSets;
+    }
+
+    get cards() {
+        return this._cards;
     }
 }

@@ -8,7 +8,9 @@ import MakeCredit from "./pages/MakeCredit";
 import MakeTransaction from "./pages/MakeTransaction";
 import Profile from "./pages/Profile";
 import Transaction from "./pages/Transaction";
-import { ADMIN_ROUTE, CREDIT_ROUTE, CARDSET_ROUTE, DEPOSIT_ROUTE, MAIN_ROUTE, PROFILE_ROUTE, TRANSACTION_ROUTE, MAKE_TRANSACTION_ROUTE,BANK_ACCOUNT_ROUTE, CREATE_CREDIT_ROUTE } from "./utils/consts"
+import CardSetCreation from "./pages/CardSetCreation";
+import CardSetPass from "./pages/CardSetPass"
+import { ADMIN_ROUTE, CREDIT_ROUTE, CARDSET_ROUTE, DEPOSIT_ROUTE, MAIN_ROUTE, PROFILE_ROUTE, TRANSACTION_ROUTE, MAKE_TRANSACTION_ROUTE,BANK_ACCOUNT_ROUTE, CREATE_CREDIT_ROUTE, CREATE_CARDSET_ROUTE, EDIT_CARDSET_ROUTE, CARDSET_PASS_ROUTE } from "./utils/consts"
 
 export const authRoutes = [
     {
@@ -46,6 +48,14 @@ export const authRoutes = [
     {
         path: CREATE_CREDIT_ROUTE,
         Component: MakeCredit
+    },
+    {
+        path: CREATE_CARDSET_ROUTE,
+        Component: CardSetCreation
+    },
+    {
+        path: CARDSET_PASS_ROUTE,
+        Component: CardSetPass
     }
 ]
 

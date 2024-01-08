@@ -10,6 +10,16 @@ class CardSetController {
         const cardSet = await CardSet.create({name, description, userId, categoryId});
         return res.json(cardSet);
     }
+    
+    async findByUserId(req, res) {
+        const userId = Number(req.params.userId);
+        const cardSet = await CardSet.findAll({
+            where: {
+                userId: userId
+            }
+        })
+        return res.json(cardSet);
+    }
 
     async getOne(req, res) {
         const id = Number(req.params.id);

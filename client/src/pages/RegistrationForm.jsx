@@ -91,7 +91,7 @@ const RegistrationForm = observer(() => {
     const submitRegistration = async (e) => {
         e.preventDefault();
         try {
-            await Axios.post('http://localhost:3001/api/user', {
+            const {data} = await Axios.post('http://localhost:3001/api/user', {
                 first_name: first_name,
                 last_name: last_name, 
                 email: email,
@@ -99,12 +99,15 @@ const RegistrationForm = observer(() => {
                 passport_id: passport_id,
                 birth_date: birth_date,
                 roleId: 1,
-            }).then((data) => {
-                const userData = jwtDecode(data.data);
-                user.setUser(userData);
-                user.setIsAuth(true);
-                console.log(user);
             })
+            console.log(data);
+            let jwtData = jwtDecode(data);
+            localStorage.setItem('token', data);
+            user.setIsAuth(true);
+            const userData = await Axios.get(`http://localhost:3001/api/user/${jwtData.id}`);
+            userData.data.decryptedPassword = password;
+            user.setUser(userData.data)
+            
         } catch(error) {
             console.log(error);
         } 

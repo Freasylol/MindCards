@@ -109,35 +109,13 @@ const LoginForm = observer(() => {
             const userData = await Axios.get(`http://localhost:3001/api/user/${jwtData.id}`);
             userData.data.decryptedPassword = password;
             user.setUser(userData.data);
+            const cardSetsData = await Axios.get(`http://localhost:3001/api/cardSet/findByUserId/${user.user.id}`);
+            object.setCardSets(cardSetsData.data);
+            console.log(cardSetsData.data);
         } catch(error) {
             console.log(error);
         }
     }
-
-    // const submitAuth = async (e) => {
-    //     e.preventDefault();
-    //     try {
-    //         await Axios.post('http://localhost:3001/api/user/verify', {
-    //             message: auth,
-    //         }).then(async (data) => {
-    //             console.log(data);
-    //             localStorage.setItem('token', token)
-    //             let jwtData = jwtDecode(token);
-    //             user.setIsAuth(true);
-    //             const userData = await Axios.get(`http://localhost:3001/api/user/${jwtData.id}`);
-    //             user.setUser(userData.data);
-    //             const bankAccountData = await Axios.get(`http://localhost:3001/api/bankAccount/findByUserId/${jwtData.id}`);
-    //             object.setBankAccounts(bankAccountData.data);
-    //             console.log(bankAccountData.data);
-    //             const creditData = await Axios.get(`http://localhost:3001/api/credit/findByUserId/${user.user.id}`);
-    //             object.setCredits(creditData.data);
-    //             console.log(creditData.data);
-    //             // console.log(object.credits);  
-    //         })
-    //     } catch(error) {
-    //         console.log(error);
-    //     } 
-    // }
 
   return (
 <div>

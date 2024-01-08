@@ -5,6 +5,16 @@ class CardController {
         return await Card.findAll().then(type => res.json(type));
     }
 
+    async getCardsByCardSet(req, res) {
+        const cardSetId = Number(req.params.cardSetId)
+        const card = await Card.findAll({
+            where: {
+                cardSetId: cardSetId
+            }
+        })
+        return res.json(card);
+    }
+
     async createOne(req, res) {
         const {task, answer, cardSetId} = req.body;
         const card = await Card.create({task, answer, cardSetId});

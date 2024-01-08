@@ -6,6 +6,7 @@ router.get('/', cardSetControllerController.getAll);
 router.post('/', cardSetControllerController.createOne);
 router.get('/:id', cardSetControllerController.getOne);
 router.put('/:id',cardSetControllerController.updateOne);
+router.get('/findByUserId/:userId', cardSetControllerController.findByUserId)
 router.delete('/', cardSetControllerController.deleteOne);
 
 module.exports = router;

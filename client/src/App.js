@@ -1,9 +1,7 @@
 import React, { useContext } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Main from './pages/Main';
-import Admin from './pages/Admin';
 import DashBoard from './pages/DashBoard';
-import Shop from './pages/Shop';
 import Deposit from './pages/Deposit';
 import Credit from './pages/Credit';
 import CardSet from './pages/Cardset';
