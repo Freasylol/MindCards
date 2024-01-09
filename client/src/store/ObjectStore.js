@@ -34,7 +34,22 @@ export default class DeviceStore {
 
         this._currentCardSetId = 1;
         this._userRates = [];
+        this._favoriteCardSets = [];
+        this._browsingHistory = [];
+        this._userLog = [];
         makeAutoObservable(this)
+    }
+
+    setUserLog(userLog) {
+        this._userLog = userLog;
+    }
+
+    setBrowsingHistory(browsingHistory) {
+        this._browsingHistory = browsingHistory
+    }
+
+    setFavoriteCardSets(favoriteCardSets) {
+        this._favoriteCardSets = favoriteCardSets;
     }
 
     setUserRates(userRates) {
@@ -75,6 +90,18 @@ export default class DeviceStore {
 
     setCardSetsBuffer(cardSetsBuffer) {
         this._cardSetsBuffer = cardSetsBuffer;
+    }
+
+    get userLog() {
+        return this._userLog;
+    }
+
+    get browsingHistory() {
+        return this._browsingHistory;
+    }
+
+    get favoriteCardSets() {
+        return this._favoriteCardSets;
     }
 
     get userRates() {

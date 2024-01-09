@@ -11,8 +11,11 @@ import Transaction from "./pages/Transaction";
 import CardSetCreation from "./pages/CardSetCreation";
 import CardSetPass from "./pages/CardSetPass";
 import CardSetView from "./pages/CardSetView"
-import { ADMIN_ROUTE, CREDIT_ROUTE, CARDSET_ROUTE, DEPOSIT_ROUTE, MAIN_ROUTE, PROFILE_ROUTE, TRANSACTION_ROUTE, MAKE_TRANSACTION_ROUTE,BANK_ACCOUNT_ROUTE, CREATE_CREDIT_ROUTE, CREATE_CARDSET_ROUTE, EDIT_CARDSET_ROUTE, CARDSET_PASS_ROUTE, CARDSET_LEADERBOARD, CARDSET_VIEW } from "./utils/consts"
+import { ADMIN_ROUTE, CREDIT_ROUTE, CARDSET_ROUTE, DEPOSIT_ROUTE, MAIN_ROUTE, PROFILE_ROUTE, TRANSACTION_ROUTE, MAKE_TRANSACTION_ROUTE,BANK_ACCOUNT_ROUTE, CREATE_CREDIT_ROUTE, CREATE_CARDSET_ROUTE, EDIT_CARDSET_ROUTE, CARDSET_PASS_ROUTE, CARDSET_LEADERBOARD, CARDSET_VIEW, CARDSET_FAVORITE, BROWSING_HISTORY, USER_LOG } from "./utils/consts"
 import CardSetLeaderBoard from "./pages/CardSetLeaderBoard";
+import CardSetFavorite from "./pages/CardSetFavorite";
+import BrowsingHistory from "./pages/BrowsingHistory";
+import UserLog from "./pages/UserLog";
 
 export const authRoutes = [
     {
@@ -66,6 +69,18 @@ export const authRoutes = [
     {
         path: CARDSET_VIEW,
         Component: CardSetView
+    },
+    {
+        path: CARDSET_FAVORITE,
+        Component: CardSetFavorite
+    },
+    {
+        path: BROWSING_HISTORY,
+        Component: BrowsingHistory
+    },
+    {
+        path: USER_LOG,
+        Component: UserLog
     }
 ]
 

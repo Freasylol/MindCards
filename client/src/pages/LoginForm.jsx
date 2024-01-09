@@ -113,7 +113,14 @@ const LoginForm = observer(() => {
             user.setUsers(usersData.data);
             const cardSetsData = await Axios.get(`http://localhost:3001/api/cardSet/findByUserId/${user.user.id}`);
             object.setCardSets(cardSetsData.data);
-            console.log(cardSetsData.data);
+            const favoriteCardSetsData = await Axios.get(`http://localhost:3001/api/favoriteCardSet/findByUserId/${user.user.id}`);
+            object.setFavoriteCardSets(favoriteCardSetsData.data);
+            const browsingHistoryData = await Axios.get(`http://localhost:3001/api/browsingHistory/findByUserId/${user.user.id}`);
+            console.log(browsingHistoryData.data);
+            // object.setBrowsingHistory(browsingHistoryData.data);
+            const userLogData = await Axios.get(`http://localhost:3001/api/userLog/findByUserId/${user.user.id}`);
+            console.log(userLogData.data);
+            object.setUserLog(userLogData.data);
         } catch(error) {
             console.log(error);
         }

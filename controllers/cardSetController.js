@@ -5,6 +5,13 @@ class CardSetController {
         return await CardSet.findAll().then(type => res.json(type));
     }
 
+    async changeCardSetName(req, res) {
+        const id = Number(req.params.id);
+        const {name} = req.body;
+        const cardSet = await CardSet.update({name}, {where: {id: id}}); 
+        return res.json(cardSet);    
+    }
+
     async createOne(req, res) {
         const {name, description, userId, categoryId} = req.body;
         const cardSet = await CardSet.create({name, description, userId, categoryId});
@@ -35,11 +42,12 @@ class CardSetController {
     }
 
     async deleteOne(req, res) {
-        CardSet.destroy({
-          where: {
-            id: req.body.id
-          }
+        const id = Number(req.params.id);
+        const cardSet = CardSet.destroy({
+          where: {id: id},
+          cascade: true
         })
+        return res.json(cardSet);
     }
 }
 

@@ -5,6 +5,16 @@ class BrowsingHistoryController {
         return await BrowsingHistory.findAll().then(type => res.json(type));
     }
 
+    async findByUserId(req, res) {
+        const userId = Number(req.params.userId);
+        const browsingHistory = await BrowsingHistory.findAll({
+            where: {
+                userId: userId
+            }
+        })
+        return res.json(browsingHistory);
+    }
+
     async createOne(req, res) {
         const {userId, cardSetId} = req.body;
         console.log(req.body);

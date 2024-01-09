@@ -5,6 +5,16 @@ class UserLogController {
         return await UserLog.findAll().then(type => res.json(type));
     }
 
+    async findByUserId(req, res) {
+        const userId = Number(req.params.userId);
+        const userLog = await UserLog.findAll({
+            where: {
+                userId: userId
+            }
+        })
+        return res.json(userLog);
+    }
+
     async createOne(req, res) {
         const {date, action, userId} = req.body;
         const userLog = await UserLog.create({date, action, userId});

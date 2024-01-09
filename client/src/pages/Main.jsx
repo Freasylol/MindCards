@@ -49,6 +49,10 @@ function Main() {
             <NavLink className={classes.navLinkStyle} to="/credit">Make a credit</NavLink> */}
             <NavLink className={classes.navLinkStyle} to="/profile">My profile</NavLink>
             <NavLink className={classes.navLinkStyle} to="/cardSet">My cardsets</NavLink>
+            <NavLink className={classes.navLinkStyle} to="/cardSetFavorite">My favorite cardsets</NavLink>
+            <NavLink className={classes.navLinkStyle} to="/browsingHistory">Browsing History</NavLink> 
+            <NavLink className={classes.navLinkStyle} to="/userLog">User Logs</NavLink> 
+
             {/* <NavLink className={classes.navLinkStyle} to="/transaction">Transactions</NavLink>
             <NavLink className={classes.navLinkStyle} to="/makeTransaction">Create a transaction</NavLink>
             <NavLink className={classes.navLinkStyle} to="/bankAccount">My BankAccounts</NavLink>

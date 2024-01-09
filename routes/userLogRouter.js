@@ -3,6 +3,7 @@ const router = new Router();
 const userLogController = require('../controllers/userLogController');
 
 router.get('/', userLogController.getAll);
+router.get('/findByUserId/:userId', userLogController.findByUserId);
 router.post('/', userLogController.createOne);
 router.get('/:id', userLogController.getOne);
 router.put('/:id',userLogController.updateOne);

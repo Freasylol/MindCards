@@ -3,6 +3,7 @@ const router = new Router();
 const browsingHistoryController = require('../controllers/browsingHistoryController');
 
 router.get('/', browsingHistoryController.getAll);
+router.get('/findByUserId/:userId', browsingHistoryController.findByUserId);
 router.post('/', browsingHistoryController.createOne);
 router.get('/:id', browsingHistoryController.getOne);
 router.put('/:id',browsingHistoryController.updateOne);

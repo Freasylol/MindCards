@@ -5,6 +5,16 @@ class FavoriteCardSetController {
         return await FavoriteCardSet.findAll().then(type => res.json(type));
     }
 
+    async findByUserId(req, res) {
+        const userId = Number(req.params.userId);
+        const favoriteCardSet = await FavoriteCardSet.findAll({
+            where: {
+                userId: userId
+            }
+        })
+        return res.json(favoriteCardSet);
+    }
+
     async createOne(req, res) {
         const {cardSetId, userId} = req.body;
         const favoriteCardSet = await FavoriteCardSet.create({cardSetId, userId});

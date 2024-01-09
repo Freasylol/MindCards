@@ -6,11 +6,12 @@ import { Context } from '../index';
 import { jwtDecode } from 'jwt-decode';
 
 
-const EditableField = observer(({ header, text, field }) => {
+const EditableField = observer(({ header, text, field, cardSetIndex }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedText, setEditedText] = useState(text);
 
   const {user} = useContext(Context);
+  const {object} = useContext(Context);
 
   const handleInputChange = async (e) => {
     setEditedText(e.target.value);
@@ -49,6 +50,12 @@ const EditableField = observer(({ header, text, field }) => {
         let jwtData = jwtDecode(data);
         localStorage.setItem('token', data);
         user.user.password = jwtData.password;
+    // }
+    } else if (field === 'cardSet') {
+        object.cardSets[cardSetIndex].name = editedText;
+        await Axios.put(`http://localhost:3001/api/cardSet/changeCardSetName/${object.cardSets[cardSetIndex].id}`, {
+            name: editedText
+        })
     }
     setIsEditing(false);
   };
