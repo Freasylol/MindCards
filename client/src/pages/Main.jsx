@@ -39,24 +39,13 @@ function Main() {
     const classes = useStyles();
 
     return (
-        <div className={classes.test}>    
-            {/* <button className={classes.signUpButton}>
-                <div className={classes.signUpButtonText}>
-                    Make a deposit
-                </div>
-            </button> */}
-            {/* <NavLink className={classes.navLinkStyle} to="/deposit">Make a deposit</NavLink>
-            <NavLink className={classes.navLinkStyle} to="/credit">Make a credit</NavLink> */}
+        <div className={classes.test}>
             <NavLink className={classes.navLinkStyle} to="/profile">My profile</NavLink>
             <NavLink className={classes.navLinkStyle} to="/cardSet">My cardsets</NavLink>
             <NavLink className={classes.navLinkStyle} to="/cardSetFavorite">My favorite cardsets</NavLink>
             <NavLink className={classes.navLinkStyle} to="/browsingHistory">Browsing History</NavLink> 
             <NavLink className={classes.navLinkStyle} to="/userLog">User Logs</NavLink> 
-
-            {/* <NavLink className={classes.navLinkStyle} to="/transaction">Transactions</NavLink>
-            <NavLink className={classes.navLinkStyle} to="/makeTransaction">Create a transaction</NavLink>
-            <NavLink className={classes.navLinkStyle} to="/bankAccount">My BankAccounts</NavLink>
-            <NavLink className={classes.navLinkStyle} to="/createCredit">Create a credit</NavLink> */}
+            <NavLink className={classes.navLinkStyle} to="/search">Search</NavLink> 
         </div>
     )
 }

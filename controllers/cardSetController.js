@@ -1,4 +1,4 @@
-const {CardSet} = require('../models/models');
+const {CardSet, UserLog} = require('../models/models');
 
 class CardSetController {
     async getAll(req, res) {
@@ -15,6 +15,12 @@ class CardSetController {
     async createOne(req, res) {
         const {name, description, userId, categoryId} = req.body;
         const cardSet = await CardSet.create({name, description, userId, categoryId});
+        // const today = new Date();
+        // const year = today.getFullYear();
+        // const month = String(today.getMonth() + 1).padStart(2, '0');
+        // const day = String(today.getDate()).padStart(2, '0');
+        // const formattedDate = `${year}-${month}-${day}`;
+        // const userLog = await UserLog.create({date: formattedDate, action: `User ${cardSet.data.userId} created cardSet`, userId: cardSet.data.userId});
         return res.json(cardSet);
     }
     
@@ -38,6 +44,12 @@ class CardSetController {
         const id = Number(req.params.id);
         const {name, description, userId, categoryId} = req.body;
         const cardSet = await CardSet.update({name, description, userId, categoryId}, {where: {id: id}});
+        const today = new Date();
+        // const year = today.getFullYear();
+        // const month = String(today.getMonth() + 1).padStart(2, '0');
+        // const day = String(today.getDate()).padStart(2, '0');
+        // const formattedDate = `${year}-${month}-${day}`;
+        // const userLog = await UserLog.create({date: formattedDate, action: `User ${cardSet.data.userId} updated cardSet`, userId: cardSet.data.userId});
         return res.json(cardSet);
     }
 
@@ -47,6 +59,12 @@ class CardSetController {
           where: {id: id},
           cascade: true
         })
+        // const today = new Date();
+        // const year = today.getFullYear();
+        // const month = String(today.getMonth() + 1).padStart(2, '0');
+        // const day = String(today.getDate()).padStart(2, '0');
+        // const formattedDate = `${year}-${month}-${day}`;
+        // const userLog = await UserLog.create({date: formattedDate, action: `User ${cardSet.data.userId} deleted cardSet`, userId: cardSet.data.userId});
         return res.json(cardSet);
     }
 }

@@ -7,6 +7,7 @@ export const CARDSET_PASS_ROUTE = '/cardSetPass';
 export const CARDSET_LEADERBOARD = '/cardSetLeaderBoard';
 export const CARDSET_FAVORITE = '/cardSetFavorite';
 export const BROWSING_HISTORY = '/browsingHistory';
+export const SEARCH_ROUTE = '/search';
 export const USER_LOG = '/userLog';
 export const CARDSET_VIEW = '/cardSetView';
 export const MAIN_ROUTE = '/';

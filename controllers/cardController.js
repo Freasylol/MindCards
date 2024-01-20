@@ -1,4 +1,4 @@
-const {Card} = require('../models/models');
+const {Card, UserLog} = require('../models/models');
 
 class CardController {
     async getAll(req, res) {
@@ -26,6 +26,12 @@ class CardController {
     async createOne(req, res) {
         const {task, answer, cardSetId} = req.body;
         const card = await Card.create({task, answer, cardSetId});
+        // const today = new Date();
+        // const year = today.getFullYear();
+        // const month = String(today.getMonth() + 1).padStart(2, '0');
+        // const day = String(today.getDate()).padStart(2, '0');
+        // const formattedDate = `${year}-${month}-${day}`;
+        // const userLog = await UserLog.create({date: formattedDate, action: `User ${card.data.userId} created cardSet`, userId: card.data.userId});
         return res.json(card);
     }
 

@@ -1,8 +1,5 @@
 const {Sequelize} = require('sequelize');
 
-
-//localhst: db
-
 module.exports = new Sequelize(
     'mindcards_db',
     'postgres',
@@ -14,8 +11,6 @@ module.exports = new Sequelize(
     }
 
 )
-
-
 //remote db
 
 // module.exports = new Sequelize(

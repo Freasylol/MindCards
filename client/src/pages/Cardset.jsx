@@ -75,7 +75,7 @@ const CardSet = observer(() => {
                     <button>New CardSet</button>
                 </NavLink>
                 {object.cardSets.map((cardSet,index) => {
-                    return <CardSetItem key={cardSet.id} cardSetOrder={index}  message={'Deposit'} cardSetObject={cardSet}></CardSetItem>
+                    return <CardSetItem key={cardSet.id} cardSetOrder={index} message={'Deposit'} cardSetObject={cardSet}></CardSetItem>
                 })}
             </div>
         </div>
