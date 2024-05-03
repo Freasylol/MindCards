@@ -3,40 +3,30 @@ import { NavLink, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import Axios from 'axios';
 import { Context } from '../index';
 import {observer} from 'mobx-react-lite';
-import { useRadioGroup } from '@material-ui/core';
 import EditableField from './EditableField';
 import { makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
-    test: {
-        // paddingTop: '50px',
-        backgroundColor: '#0A092E',
-        // height: '90vh',
-        color: '#F6F7FB'
-    }, 
-    signUpButton: {
+    btn: {
         outline: 'none',
         border: 'none',
         backgroundColor: '#4255FF',
         
-        display: 'flex',
+        display: 'inline-flex',
         alignItems: 'center',
         justifyContent: 'center',
-
+        
         cursor: 'pointer',
 
-        // paddingTop: '50px',
-
         borderRadius: '60px',
-        width: '180px'
+        padding: '5px 20px', 
+        marginLeft: '5px',  
+        color: '#fff' 
     },
-    signUpButtonText: {
-        color: '#0A092E',
-        fontSize: '24px'
-    },
-    // editButton: {
-        
-    // }
+    editableItem: {
+        display: 'flex',
+        marginBottom: '10px'
+    }
 }))
 
 const CardSetItem = observer(({cardSetOrder, message, cardSetObject}) => {
@@ -96,16 +86,19 @@ const CardSetItem = observer(({cardSetOrder, message, cardSetObject}) => {
         })
     }
 
+    let cardSetButtonClasses = classes.btn + ' ' + cardSetOrder.toString();
+
     return (
-        <div style={{display: 'flex'}} className={classes.test}>          
+        <div className={classes.editableItem}>          
             <EditableField style={{display: 'inline'}} header={''} text={cardSetObject.name} field={'cardSet'} cardSetIndex={cardSetOrder}></EditableField>
-            <div style ={{marginLeft: '15px'}}>
+            <div>
                 {/* <button class={cardSetOrder}>Edit</button> */}
-                <button class={cardSetOrder} onClick={handleDelete}>Delete</button>
-                <button class={cardSetOrder} onClick={handleFavorite}>Favorite</button>
-                <button class={cardSetOrder} onClick={handleView}>View</button>
-                <button class={cardSetOrder} onClick={handleLeaderboard}>LeaderBoard</button>
-                <button class={cardSetOrder} onClick={handleCardSetPass}>Pass</button>
+                {/* <button className={classes.btn} class="roma">Bebra</button> */}
+                <button className={cardSetButtonClasses} onClick={handleDelete}>Delete</button>
+                <button className={cardSetButtonClasses} onClick={handleFavorite}>Favorite</button>
+                <button className={cardSetButtonClasses} onClick={handleView}>View</button>
+                <button className={cardSetButtonClasses} onClick={handleLeaderboard}>LeaderBoard</button>
+                <button className={cardSetButtonClasses} onClick={handleCardSetPass}>Pass</button>
             </div>
         </div>
     )

@@ -3,10 +3,32 @@ import Axios from 'axios';
 import { observer } from 'mobx-react-lite';
 import { useContext } from 'react';
 import { Context } from '../index';
+import {makeStyles} from '@material-ui/core';
 import { jwtDecode } from 'jwt-decode';
 
+const useStyles = makeStyles((theme) => ({
+    btn: {
+        outline: 'none',
+        border: 'none',
+        backgroundColor: '#4255FF',
+        
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        
+        cursor: 'pointer',
+
+        borderRadius: '60px',
+        width: '50px',
+        padding: '5px 20px',  
+        color: '#fff'  
+    },
+    
+}))
 
 const EditableField = observer(({ header, text, field, cardSetIndex }) => {
+  const classes = useStyles();
+
   const [isEditing, setIsEditing] = useState(false);
   const [editedText, setEditedText] = useState(text);
 
@@ -80,11 +102,11 @@ const EditableField = observer(({ header, text, field, cardSetIndex }) => {
       )}
       {isEditing ? (
         <div style={{display: 'inline'}}>
-            <button onClick={handleSaveClick}>Save</button>
-            <button onClick={handleCancelClick}>Cancel</button>
+            <button className={classes.btn} onClick={handleSaveClick}>Save</button>
+            <button className={classes.btn} onClick={handleCancelClick}>Cancel</button>
         </div>
       ) : (
-        <button onClick={handleEditClick}>Edit</button>
+        <button className={classes.btn} onClick={handleEditClick}>Edit</button>
       )}
     </div>
   );

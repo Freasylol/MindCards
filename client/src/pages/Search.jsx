@@ -2,39 +2,15 @@ import React, { useState, useContext } from 'react';
 import { Context } from '../index';
 import {observer} from 'mobx-react-lite';
 import { makeStyles} from '@material-ui/core';
+import useSharedStyles from './useSharedStyles';
 
 const useStyles = makeStyles((theme) => ({
-    test: {
-        paddingTop: '50px',
-        backgroundColor: '#0A092E',
-        height: '90vh',
-        color: '#F6F7FB'
-    }, 
-    signUpButton: {
-        outline: 'none',
-        border: 'none',
-        backgroundColor: '#4255FF',
-        
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-
-        cursor: 'pointer',
-
-        borderRadius: '60px',
-        width: '180px'
-    },
-    signUpButtonText: {
-        color: '#0A092E',
-        fontSize: '24px'
-    },
-    testStyle: {
-        color: '#fff'
-    },
+   
 }))
 
 const Search = observer(() => {
   const classes = useStyles();
+  const sharedClasses = useSharedStyles();
 
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
@@ -62,16 +38,19 @@ const Search = observer(() => {
   };
 
   return (
-    <div className={classes.test}>
-      <form onSubmit={handleFormSubmit}>
-        <input type="text" value={searchQuery} onChange={handleInputChange} />
-        <button type="submit">Search</button>
-      </form>
+    <div className={sharedClasses.wrapper}>
+        <div className={sharedClasses.container}>
+            <form onSubmit={handleFormSubmit}>
+                <input type="text" value={searchQuery} onChange={handleInputChange} />
+                <button type="submit">Search</button>
+            </form>
 
-      {/* Отображение результатов поиска */}
-      {searchResults.map((result) => (
-        <div key={result}>{result}</div>
-      ))}
+            {/* Отображение результатов поиска */}
+            {searchResults.map((result) => (
+                <div key={result}>{result}</div>
+            ))}
+        </div>
+      
     </div>
   );
 });

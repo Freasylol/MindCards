@@ -5,36 +5,15 @@ import {observer} from 'mobx-react-lite';
 import CardSetItem from './CardSetItem';
 import AddElementButton from './AddElementButton';
 import Axios from 'axios';
+import useSharedStyles from './useSharedStyles';
 
 const useStyles = makeStyles((theme) => ({
-    test: {
-        paddingTop: '50px',
-        backgroundColor: '#0A092E',
-        height: '90vh',
-        color: '#F6F7FB'
-    }, 
-    signUpButton: {
-        outline: 'none',
-        border: 'none',
-        backgroundColor: '#4255FF',
-        
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-
-        cursor: 'pointer',
-
-        borderRadius: '60px',
-        width: '180px'
-    },
-    signUpButtonText: {
-        color: '#0A092E',
-        fontSize: '24px'
-    },
+  
 }))
 
 const CardSet = observer(() => {
     const classes = useStyles();
+    const sharedClasses = useSharedStyles();
 
     const [content, setContent] = useState('');
     const [contentState, setContentState] = useState('');
@@ -80,15 +59,17 @@ const CardSet = observer(() => {
     }
 
     return (
-        <div className={classes.test}>
-            <div>CardSet Name</div>
-            <input type="text" onChange={handleCardSetName}></input>
-            <div>CardSet Description</div>
-            <input type="text" onChange={handleCardSetDescription}></input>
-            <AddElementButton></AddElementButton>
-            <button onClick={createCardSet}>
-                Create CardSet
-            </button>
+        <div className={sharedClasses.wrapper}>
+            <div className={sharedClasses.container}>
+                <div>CardSet Name</div>
+                <input type="text" onChange={handleCardSetName}></input>
+                <div>CardSet Description</div>
+                <input type="text" onChange={handleCardSetDescription}></input>
+                <AddElementButton></AddElementButton>
+                <button onClick={createCardSet}>
+                    Create CardSet
+                </button>
+            </div>
         </div>
     )
 })

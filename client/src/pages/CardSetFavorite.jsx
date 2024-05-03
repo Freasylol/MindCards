@@ -8,12 +8,16 @@ import Axios from 'axios';
 import LogItem from './LogItem';
 
 const useStyles = makeStyles((theme) => ({
-    test: {
+    wrapper: {
         paddingTop: '50px',
         backgroundColor: '#0A092E',
         height: '90vh',
         color: '#F6F7FB'
     }, 
+    container: {
+        maxWidth: '1200px',
+        margin: '0 auto',
+    },
     signUpButton: {
         outline: 'none',
         border: 'none',
@@ -54,8 +58,8 @@ const CardSetFavorite = observer(() => {
     }
 
     return (
-        <div className={classes.test}>  
-            <div>
+        <div className={classes.wrapper}>  
+            <div className={classes.container}>
                 Favorites
                 {object.favoriteCardSets.map((favoriteCardSet) => {
                     return <LogItem key={favoriteCardSet.id} message1={''} message2={getCardSetNameById(favoriteCardSet.cardSetId)}></LogItem>
