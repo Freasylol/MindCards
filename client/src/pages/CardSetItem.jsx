@@ -37,6 +37,44 @@ const CardSetItem = observer(({cardSetOrder, message, cardSetObject}) => {
     const {object} = useContext(Context);
     const {user} = useContext(Context);
 
+    const handleCardsIndex = async(e) => {
+        e.preventDefault();
+        let cards = object.cards;
+        let cardSets = object.cardSets;
+        let cardsIndexObject = {};
+        let cardsCountObject = {};
+
+        for (let i = 0; i < cards.length; i++) {
+            let cardSetId = cards[i].cardSetId;
+            let cardId = cards[i].id;
+            cardsIndexObject[cardId] = cardSetId;
+            
+            if (cardsCountObject[cardSetId]) {
+                cardsCountObject[cardSetId] += 1;
+            } else {
+                cardsCountObject[cardSetId] = 1;
+            }
+            console.log(cardSetId);
+            console.log(cardId);
+        }
+
+        // Object.keys(cardsIndexObject).map((item) => {
+            
+        // })
+
+        // cardsIndexObject.filter((item) => {
+            
+        // })
+
+        // for (const key in cardsIndexObject) {
+        //     cardsIndexObject[key] = 
+        // }
+        console.log(cardsCountObject);
+        object.setCardSetsCount(cardsCountObject);
+
+        console.log(cardsIndexObject);
+    }
+
     const handleCardSetPass = async(e) => {
         e.preventDefault();
         console.log(e.target.className);
@@ -92,14 +130,17 @@ const CardSetItem = observer(({cardSetOrder, message, cardSetObject}) => {
         <div className={classes.editableItem}>          
             <EditableField style={{display: 'inline'}} header={''} text={cardSetObject.name} field={'cardSet'} cardSetIndex={cardSetOrder}></EditableField>
             <div>
-                {/* <button class={cardSetOrder}>Edit</button> */}
-                {/* <button className={classes.btn} class="roma">Bebra</button> */}
+                <button className={cardSetButtonClasses} onClick={handleCardsIndex}>CardsIndex</button>
+        
                 <button className={cardSetButtonClasses} onClick={handleDelete}>Delete</button>
                 <button className={cardSetButtonClasses} onClick={handleFavorite}>Favorite</button>
                 <button className={cardSetButtonClasses} onClick={handleView}>View</button>
                 <button className={cardSetButtonClasses} onClick={handleLeaderboard}>LeaderBoard</button>
                 <button className={cardSetButtonClasses} onClick={handleCardSetPass}>Pass</button>
+                <div>{object.cardSetsCount[object.cardSets[cardSetOrder].id]}</div>
+                <div>{object.cards.length}</div>
             </div>
+    
         </div>
     )
 })

@@ -1,12 +1,12 @@
 import React from 'react';
 import DashBoard from './pages/DashBoard';
-import { BrowserRouter } from 'react-router-dom/cjs/react-router-dom.min';
+import { BrowserRouter } from 'react-router-dom';
 import AppRouter from './components/AppRouter';
 
 function App() {
   return (
     <div className="App">
-      <DashBoard />
+        <DashBoard />
         <BrowserRouter>
             <AppRouter />
         </BrowserRouter>

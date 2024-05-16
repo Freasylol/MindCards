@@ -6,6 +6,7 @@ import { Context } from '../index';
 import { useContext } from 'react';
 import { observer } from 'mobx-react-lite';
 import "core-js/stable/atob";
+import { CARDSET_PASS_ROUTE } from '../utils/consts';
 
 const useStyles = makeStyles((theme) => ({
     signUp: {
@@ -112,7 +113,13 @@ const LoginForm = observer(() => {
             const usersData = await Axios.get(`http://localhost:3001/api/user`);
             user.setUsers(usersData.data);
             const cardSetsData = await Axios.get(`http://localhost:3001/api/cardSet/findByUserId/${user.user.id}`);
+            console.log(cardSetsData.data);
+            // let sortedCardSets = await cardSetsData.data.filter((a, b) => a.id - b.id);
             object.setCardSets(cardSetsData.data);
+            // console.log(sortedCardSets);
+            const cardsData = await Axios.get(`http://localhost:3001/api/card`);
+            object.setCards(cardsData.data);
+            console.log(cardsData.data);
             const favoriteCardSetsData = await Axios.get(`http://localhost:3001/api/favoriteCardSet/findByUserId/${user.user.id}`);
             object.setFavoriteCardSets(favoriteCardSetsData.data);
             const browsingHistoryData = await Axios.get(`http://localhost:3001/api/browsingHistory/findByUserId/${user.user.id}`);

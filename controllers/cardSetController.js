@@ -2,7 +2,7 @@ const {CardSet, UserLog} = require('../models/models');
 
 class CardSetController {
     async getAll(req, res) {
-        return await CardSet.findAll().then(type => res.json(type));
+        return await CardSet.findAll().then(type => res.json(type.sort((a, b) => a.id - b.id)));
     }
 
     async changeCardSetName(req, res) {

@@ -1,16 +1,14 @@
 import React, { useContext } from "react";
-import { AppBar, Container, IconButton, Toolbar, Button, Typography, Box, makeStyles, Dialog, DialogTitle, useTheme, useMediaQuery, Menu, MenuItem, Link} from '@material-ui/core';
+import { AppBar, Container, Toolbar, Button, makeStyles, Link} from '@material-ui/core';
 import RegistrationForm from "./RegistrationForm.jsx";
 import LoginForm from "./LoginForm";
 import appIcon from '../images/cards.png';
 import { observer } from 'mobx-react-lite';
 import { Context } from "../index.js";
+import { NavLink } from 'react-router-dom';
+import { BrowserRouter } from "react-router-dom/cjs/react-router-dom.min.js";
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1,
-        backgroundColor: '#0A092E'
-    },
     title: {
         flexGrow: 1
     },
@@ -33,6 +31,12 @@ const useStyles = makeStyles((theme) => ({
     navBarContainer: {
         display: 'flex',
         justifyContent: 'space-between'
+    },
+    navLinkStyle: {
+        color: '#F6F7FB',
+        textDecoration: 'none',
+        display: 'block',
+        cursor: 'pointer'
     },
     logInButton: {
         marginRight: '10px'
@@ -70,13 +74,14 @@ const DashBoard = observer(() => {
 
     return (
     <div className={classes.project}>
+
         <Container className={classes.container}>
             <div className={classes.overlay} />
             <Toolbar className={classes.navBarContainer}>
-                    <div className={classes.leftNavBar}>
-                        <Link href="/" className={[classes.leftNavBarText, classes.link]}>MindCards</Link>
-                        <img src={appIcon} height={30} alt="Bank App Icon"></img>
-                        <div>{user.user.first_name}</div>
+                    <div className={classes.leftNavBar}>                    
+                    <Link href="/" className={[classes.leftNavBarText, classes.link]}>MindCards</Link> 
+                    <img src={appIcon} height={30} alt="Bank App Icon"></img>
+                    <div>{user.user.first_name}</div>
                     </div>             
                     {authBlock}
             </Toolbar>

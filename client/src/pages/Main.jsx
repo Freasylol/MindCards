@@ -62,9 +62,7 @@ function Main() {
                     <NavLink className={classes.navLinkStyle} to="/search">Search</NavLink> 
                 </button>
             </div>
-        </div>
-            
-       
+        </div>                
     )
 }
 

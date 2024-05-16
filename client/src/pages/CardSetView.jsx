@@ -7,6 +7,7 @@ import CardSetItem from './CardSetItem';
 import Axios from 'axios';
 import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
 import CardSetViewSlider from './CardSetViewSlider';
+import useSharedStyles from './useSharedStyles';
 
 const useStyles = makeStyles((theme) => ({
     test: {
@@ -40,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
 
 const CardSetView = observer(() => {
     const classes = useStyles();
+    const sharedClasses = useSharedStyles();
 
     const [content, setContent] = useState('');
     const [contentState, setContentState] = useState('');
@@ -49,8 +51,7 @@ const CardSetView = observer(() => {
 
     return (
         <div className={classes.test}>  
-            <div>
-                CardSetView
+            <div className={sharedClasses.container}>
                 <CardSetViewSlider></CardSetViewSlider>
             </div>
         </div>

@@ -3,6 +3,7 @@ import { Context } from '../index';
 import {observer} from 'mobx-react-lite';
 import { makeStyles} from '@material-ui/core';
 import Axios from 'axios';
+import useSharedStyles from "./useSharedStyles";
 
 const useStyles = makeStyles((theme) => ({
     test: {
@@ -31,13 +32,28 @@ const useStyles = makeStyles((theme) => ({
         color: '#0A092E',
         fontSize: '24px'
     },
-    testStyle: {
-        color: '#fff'
-    },
+    sliderBtn: {
+        outline: 'none',
+        border: 'none',
+        backgroundColor: '#4255FF',
+        
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        
+        cursor: 'pointer',
+
+        borderRadius: '60px',
+        width: '100px',
+        padding: '20px 20px',  
+        color: '#fff'  
+        
+    }
 }))
 
 const CardSetViewSlider = observer(({message, cardObject}) => {
     const classes = useStyles();
+    const sharedClasses = useSharedStyles();
 
     const {object} = useContext(Context);
     const {user} = useContext(Context);
@@ -73,12 +89,15 @@ const CardSetViewSlider = observer(({message, cardObject}) => {
     }
     return (
         <div>
-            <button className={classes.signUpButton} onClick={handleContent}>
+            <button className={classes.signUpButton} onClick={handleContent} style={{marginBottom: '30px'}}>
                 {/* {content} */}
                 {isTask === true ?  object.cards[index].task : object.cards[index].answer}              
             </button>
-            <button onClick={handlePrev}>Prev</button>
-            <button onClick={handleNext}>Next</button>
+            <div className={sharedClasses.container} style={{display: 'flex', justifyContent: 'center'}}>
+                <button className={classes.sliderBtn} style={{marginRight: '30px'}} onClick={handlePrev}>Prev</button>
+                <button className={classes.sliderBtn} onClick={handleNext}>Next</button>
+            </div>
+           
         </div>
     )
 })

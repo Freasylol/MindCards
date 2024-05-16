@@ -35,6 +35,16 @@ class CardController {
         return res.json(card);
     }
 
+    async findByUserId(req, res) {
+        const userId = Number(req.params.userId);
+        const cardSet = await CardSet.findAll({
+            where: {
+                userId: userId
+            }
+        })
+        return res.json(cardSet);
+    }
+
     async getOne(req, res) {
         const id = Number(req.params.id);
         const card = await Card.findOne({where: {id: id}});

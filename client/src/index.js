@@ -20,7 +20,7 @@ render(
             <React.StrictMode>
                 <App />
             </React.StrictMode>
-        </div>,
+        </div>
         
     </Context.Provider>,
     root

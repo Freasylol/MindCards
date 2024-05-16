@@ -6,6 +6,9 @@ import EditableField from './EditableField';
 import useSharedStyles from './useSharedStyles';
 
 const useStyles = makeStyles((theme) => ({
+    editableItem: {
+        marginBottom: '10px'
+    }
 }))
 
 const Profile = observer(() => {
@@ -29,10 +32,18 @@ const Profile = observer(() => {
     return (
         <div className={sharedClasses.wrapper}>  
             <div className={sharedClasses.container}>
-                <EditableField header="First Name" text={user.user.first_name} field="first_name" ></EditableField>
-                <EditableField header="Last Name" text={user.user.last_name} field="last_name"></EditableField>
-                <EditableField header="Email" text={user.user.email} field="email"></EditableField>
-                <EditableField header="Password" text={user.user.decryptedPassword} field="password"></EditableField>
+                <div className={classes.editableItem}>
+                    <EditableField style={{color: '#000'}} header="First Name" text={user.user.first_name} field="first_name" ></EditableField>
+                </div>
+                <div className={classes.editableItem}>
+                    <EditableField style={{marginBottom: '10px'}} header="Last Name" text={user.user.last_name} field="last_name"></EditableField>
+                </div>
+                <div className={classes.editableItem}>
+                    <EditableField style={{marginBottom: '10px'}} header="Email" text={user.user.email} field="email"></EditableField>
+                </div>
+                <div className={classes.editableItem}>
+                    <EditableField style={{marginBottom: '10px'}} header="Password" text={user.user.decryptedPassword} field="password"></EditableField>
+                </div>
             </div>
         </div>
     )

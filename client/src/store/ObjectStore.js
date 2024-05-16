@@ -23,14 +23,12 @@ export default class DeviceStore {
         this._transactions = [
         ];
         this._cardSets = [
-            
         ];
         this._cardSetsBuffer = [
-
         ];
         this._cards = [
-
         ];
+        this._cardSetsCount = {};
 
         this._currentCardSetId = 1;
         this._userRates = [];
@@ -38,6 +36,10 @@ export default class DeviceStore {
         this._browsingHistory = [];
         this._userLog = [];
         makeAutoObservable(this)
+    }
+
+    setCardSetsCount(cardSetsCount) {
+        this._cardSetsCount = cardSetsCount;
     }
 
     setUserLog(userLog) {
@@ -90,6 +92,10 @@ export default class DeviceStore {
 
     setCardSetsBuffer(cardSetsBuffer) {
         this._cardSetsBuffer = cardSetsBuffer;
+    }
+
+    get cardSetsCount() {
+        return this._cardSetsCount;
     }
 
     get userLog() {

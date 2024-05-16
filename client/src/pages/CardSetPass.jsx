@@ -44,7 +44,6 @@ const CardSetPass = observer(() => {
     const [content, setContent] = useState('');
     const [contentState, setContentState] = useState('');
 
- 
     const {object} = useContext(Context);
 
     return (
