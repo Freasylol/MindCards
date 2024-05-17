@@ -1,14 +1,18 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useSharedStyles = makeStyles((theme) => ({
+    "@global": {
+        body: {
+            backgroundColor: '#0A092E',
+        },
+      },
     root: {
         flexGrow: 1,
-        backgroundColor: '#0A092E'
+        backgroundColor: '#0A092E',
     },
     wrapper: {
         paddingTop: '50px',
         backgroundColor: '#0A092E',
-        height: '90vh',
         color: '#F6F7FB'
     }, 
     container: {

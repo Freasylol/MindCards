@@ -13,12 +13,13 @@ const UserLog = observer(() => {
     const {object} = useContext(Context);
 
     return (
-        <div className={sharedClasses.wrapper}>  
-            <div className={sharedClasses.container}>
-                User Logs
-                {object.userLog.map((userLog) => {
-                    return <LogItem key={userLog.id} message1={''} message2={userLog.action}></LogItem>
-                })}
+        <div className={sharedClasses.root}>  
+            <div className={sharedClasses.wrapper}>
+                <div className={sharedClasses.container}>
+                    {object.userLog.map((userLog) => {
+                        return <LogItem key={userLog.id} message1={''} message2={userLog.action}></LogItem>
+                    })}
+                </div>
             </div>
         </div>
     )
