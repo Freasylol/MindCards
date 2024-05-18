@@ -31,7 +31,6 @@ const useSharedStyles = makeStyles((theme) => ({
         cursor: 'pointer',
 
         borderRadius: '60px',
-        width: '50px',
         padding: '5px 20px',  
         color: '#fff'  
     },

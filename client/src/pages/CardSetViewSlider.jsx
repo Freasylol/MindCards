@@ -6,12 +6,6 @@ import Axios from 'axios';
 import useSharedStyles from "./useSharedStyles";
 
 const useStyles = makeStyles((theme) => ({
-    test: {
-        paddingTop: '50px',
-        backgroundColor: '#0A092E',
-        height: '90vh',
-        color: '#F6F7FB'
-    }, 
     signUpButton: {
         outline: 'none',
         border: 'none',
@@ -47,7 +41,6 @@ const useStyles = makeStyles((theme) => ({
         width: '100px',
         padding: '20px 20px',  
         color: '#fff'  
-        
     }
 }))
 

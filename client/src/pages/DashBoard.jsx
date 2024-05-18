@@ -82,7 +82,9 @@ const DashBoard = observer(() => {
                     <Link href="/" className={[classes.leftNavBarText, classes.link]}>MindCards</Link> 
                     <img src={appIcon} height={30} alt="Bank App Icon"></img>
                     <div>{user.user.first_name}</div>
-                    </div>             
+                    <Link style={{paddingLeft: '50px'}} href="/cardSet" className={[classes.leftNavBarText, classes.link]}>Your library</Link>           
+
+                    </div>   
                     {authBlock}
             </Toolbar>
         </Container>

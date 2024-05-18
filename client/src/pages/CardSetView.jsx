@@ -50,7 +50,7 @@ const CardSetView = observer(() => {
     const {object} = useContext(Context);
 
     return (
-        <div className={classes.test}>  
+        <div className={sharedClasses.wrapper}>  
             <div className={sharedClasses.container}>
                 <CardSetViewSlider></CardSetViewSlider>
             </div>

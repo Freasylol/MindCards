@@ -1,18 +1,10 @@
 import React from 'react';
 import { makeStyles} from '@material-ui/core';
 import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
+import useSharedStyles from './useSharedStyles';
 // import Menu from './Menu';
 
 const useStyles = makeStyles((theme) => ({
-    wrapper: {
-        paddingTop: '50px',
-        backgroundColor: '#0A092E',
-        height: '90vh'
-    }, 
-    container: {
-        maxWidth: '1200px',
-        margin: '0 auto',
-    },
     navLinkStyle: {
         color: '#F6F7FB',
         textDecoration: 'none',
@@ -39,10 +31,11 @@ const useStyles = makeStyles((theme) => ({
 
 function Main() {
     const classes = useStyles();
+    const sharedClasses = useSharedStyles();
 
     return (
-        <div className={classes.wrapper}>
-            <div className={classes.container}>
+        <div className={sharedClasses.wrapper}>
+            <div className={sharedClasses.container}>
                 <button className={classes.btn}>
                     <NavLink className={classes.navLinkStyle} to="/profile">My profile</NavLink>
                 </button>
