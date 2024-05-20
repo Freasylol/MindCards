@@ -1,4 +1,4 @@
-import CardSet from "./pages/Cardset";
+import CardSet from "./pages/CardSet";
 import Main from "./pages/Main";
 import Profile from "./pages/Profile";
 import CardSetCreation from "./pages/CardSetCreation";

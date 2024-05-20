@@ -6,6 +6,7 @@ import CardSetItem from './CardSetItem';
 import AddElementButton from './AddElementButton';
 import Axios from 'axios';
 import useSharedStyles from './useSharedStyles';
+import DashBoard from './DashBoard';
 
 const useStyles = makeStyles((theme) => ({
   
@@ -59,16 +60,19 @@ const CardSet = observer(() => {
     }
 
     return (
-        <div className={sharedClasses.wrapper}>
-            <div className={sharedClasses.container}>
-                <div>CardSet Name</div>
-                <input type="text" onChange={handleCardSetName}></input>
-                <div>CardSet Description</div>
-                <input type="text" onChange={handleCardSetDescription}></input>
-                <AddElementButton></AddElementButton>
-                <button onClick={createCardSet}>
-                    Create CardSet
-                </button>
+        <div>
+            <DashBoard />
+            <div className={sharedClasses.wrapper}>
+                <div className={sharedClasses.container}>
+                    <div>CardSet Name</div>
+                    <input type="text" onChange={handleCardSetName}></input>
+                    <div>CardSet Description</div>
+                    <input type="text" onChange={handleCardSetDescription}></input>
+                    <AddElementButton></AddElementButton>
+                    <button onClick={createCardSet}>
+                        Create CardSet
+                    </button>
+                </div>
             </div>
         </div>
     )

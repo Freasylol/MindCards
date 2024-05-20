@@ -8,6 +8,7 @@ import Axios from 'axios';
 import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
 import CardSetViewSlider from './CardSetViewSlider';
 import useSharedStyles from './useSharedStyles';
+import DashBoard from './DashBoard';
 
 const useStyles = makeStyles((theme) => ({
     test: {
@@ -50,11 +51,15 @@ const CardSetView = observer(() => {
     const {object} = useContext(Context);
 
     return (
-        <div className={sharedClasses.wrapper}>  
-            <div className={sharedClasses.container}>
-                <CardSetViewSlider></CardSetViewSlider>
+        <div>
+            <DashBoard />
+             <div className={sharedClasses.wrapper}>  
+                <div className={sharedClasses.container}>
+                    <CardSetViewSlider></CardSetViewSlider>
+                </div>
             </div>
         </div>
+       
     )
 })
 

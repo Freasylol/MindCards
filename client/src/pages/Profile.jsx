@@ -4,6 +4,7 @@ import { Context } from '../index';
 import {observer} from 'mobx-react-lite';
 import EditableField from './EditableField';
 import useSharedStyles from './useSharedStyles';
+import DashBoard from './DashBoard';
 
 const useStyles = makeStyles((theme) => ({
     editableItem: {
@@ -30,22 +31,26 @@ const Profile = observer(() => {
     console.log(a);
 
     return (
-        <div className={sharedClasses.wrapper}>  
-            <div className={sharedClasses.container}>
-                <div className={classes.editableItem}>
-                    <EditableField style={{color: '#000'}} header="First Name" text={user.user.first_name} field="first_name" ></EditableField>
-                </div>
-                <div className={classes.editableItem}>
-                    <EditableField style={{marginBottom: '10px'}} header="Last Name" text={user.user.last_name} field="last_name"></EditableField>
-                </div>
-                <div className={classes.editableItem}>
-                    <EditableField style={{marginBottom: '10px'}} header="Email" text={user.user.email} field="email"></EditableField>
-                </div>
-                <div className={classes.editableItem}>
-                    <EditableField style={{marginBottom: '10px'}} header="Password" text={user.user.decryptedPassword} field="password"></EditableField>
+        <div>
+            <DashBoard />
+            <div className={sharedClasses.wrapper}>  
+                <div className={sharedClasses.container}>
+                    <div className={classes.editableItem}>
+                        <EditableField style={{color: '#000'}} header="First Name" text={user.user.first_name} field="first_name" ></EditableField>
+                    </div>
+                    <div className={classes.editableItem}>
+                        <EditableField style={{marginBottom: '10px'}} header="Last Name" text={user.user.last_name} field="last_name"></EditableField>
+                    </div>
+                    <div className={classes.editableItem}>
+                        <EditableField style={{marginBottom: '10px'}} header="Email" text={user.user.email} field="email"></EditableField>
+                    </div>
+                    <div className={classes.editableItem}>
+                        <EditableField style={{marginBottom: '10px'}} header="Password" text={user.user.decryptedPassword} field="password"></EditableField>
+                    </div>
                 </div>
             </div>
         </div>
+        
     )
 })
 

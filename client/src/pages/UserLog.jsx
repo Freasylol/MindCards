@@ -3,6 +3,7 @@ import { Context } from '../index';
 import {observer} from 'mobx-react-lite';
 import LogItem from './LogItem';
 import useSharedStyles from './useSharedStyles';
+import DashBoard from './DashBoard';
 
 const UserLog = observer(() => {
     const sharedClasses = useSharedStyles();
@@ -13,7 +14,9 @@ const UserLog = observer(() => {
     const {object} = useContext(Context);
 
     return (
-        <div className={sharedClasses.root}>  
+        
+        <div className={sharedClasses.root}> 
+            <DashBoard /> 
             <div className={sharedClasses.wrapper}>
                 <div className={sharedClasses.container}>
                     {object.userLog.map((userLog) => {

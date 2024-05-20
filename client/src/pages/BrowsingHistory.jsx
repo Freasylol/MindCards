@@ -7,6 +7,7 @@ import CardSetItem from './CardSetItem';
 import Axios from 'axios';
 import LogItem from './LogItem';
 import useSharedStyles from './useSharedStyles';
+import DashBoard from './DashBoard';
 
 const useStyles = makeStyles((theme) => ({
 }))
@@ -29,14 +30,18 @@ const BrowsingHistory = observer(() => {
     }
 
     return (
-        <div className={sharedClasses.wrapper}>  
-            <div className={sharedClasses.container}>
-                Browsing History
-                {object.browsingHistory.map((browsingHistory) => {
-                    return <LogItem key={browsingHistory.id} message1={''} message2={getCardSetNameById(browsingHistory.cardSetId)}></LogItem>
-                })}
+        <div>
+            <DashBoard />
+            <div className={sharedClasses.wrapper}>  
+                <div className={sharedClasses.container}>
+                    Browsing History
+                    {object.browsingHistory.map((browsingHistory) => {
+                        return <LogItem key={browsingHistory.id} message1={''} message2={getCardSetNameById(browsingHistory.cardSetId)}></LogItem>
+                    })}
+                </div>
             </div>
         </div>
+       
     )
 })
 

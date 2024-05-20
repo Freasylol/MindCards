@@ -7,6 +7,7 @@ import CardSetItem from './CardSetItem';
 import Axios from 'axios';
 import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
 import useSharedStyles from './useSharedStyles';
+import DashBoard from './DashBoard';
 
 const useStyles = makeStyles((theme) => ({ 
     btn: {
@@ -62,16 +63,21 @@ const CardSet = observer(() => {
     const {object} = useContext(Context);
 
     return (
-        <div className={sharedClasses.wrapper}>
-            <div className={sharedClasses.container}>
-                <NavLink to="/createCardSet">
-                    <button className={classes.btn}>New CardSet</button>
-                </NavLink>
-                {object.cardSets.map((cardSet,index) => {
-                    return <CardSetItem key={cardSet.id} cardSetOrder={index} message={'Deposit'} cardSetObject={cardSet}></CardSetItem>
-                })}
+        <div>
+            <DashBoard />
+            <div className={sharedClasses.wrapper}>
+                <div className={sharedClasses.container}>
+                    <NavLink to="/createCardSet">
+                        <button className={classes.btn}>New CardSet</button>
+                    </NavLink>
+                    {object.cardSets.map((cardSet,index) => {
+                        return <CardSetItem key={cardSet.id} cardSetOrder={index} message={'Deposit'} cardSetObject={cardSet}></CardSetItem>
+                    })}
+                </div>
             </div>
         </div>
+
+        
     )
 })
 

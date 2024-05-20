@@ -6,6 +6,7 @@ import ObjectItem from './ObjectItem';
 import CardSetItem from './CardSetItem';
 import Axios from 'axios';
 import LogItem from './LogItem';
+import DashBoard from './DashBoard';
 
 const useStyles = makeStyles((theme) => ({
     wrapper: {
@@ -58,14 +59,18 @@ const CardSetFavorite = observer(() => {
     }
 
     return (
-        <div className={classes.wrapper}>  
-            <div className={classes.container}>
-                Favorites
-                {object.favoriteCardSets.map((favoriteCardSet) => {
-                    return <LogItem key={favoriteCardSet.id} message1={''} message2={getCardSetNameById(favoriteCardSet.cardSetId)}></LogItem>
-                })}
+        <div>
+            <DashBoard />
+            <div className={classes.wrapper}>  
+                <div className={classes.container}>
+                    Favorites
+                    {object.favoriteCardSets.map((favoriteCardSet) => {
+                        return <LogItem key={favoriteCardSet.id} message1={''} message2={getCardSetNameById(favoriteCardSet.cardSetId)}></LogItem>
+                    })}
+                </div>
             </div>
         </div>
+        
     )
 })
 

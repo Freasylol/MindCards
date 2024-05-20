@@ -5,7 +5,7 @@ import LoginForm from "./LoginForm";
 import appIcon from '../images/cards.png';
 import { observer } from 'mobx-react-lite';
 import { Context } from "../index.js";
-import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
 import { BrowserRouter } from "react-router-dom/cjs/react-router-dom.min.js";
 
 const useStyles = makeStyles((theme) => ({
@@ -16,35 +16,21 @@ const useStyles = makeStyles((theme) => ({
         width: '100%',
         height: '10vh',
         backgroundColor: '#0A092E',
-        color: '#F6F7FB'
-    },
-    dialog: {
-        backgroundColor: '#0A092E'
+        color: '#F6F7FB',
+        borderBottom: '1px solid #F6F7FB'
     },
     leftNavBar: {
         display: 'flex',
         alignItems: 'center',
     },
-    leftNavBarText: {
-        marginRight: '10px'
-    },
     navBarContainer: {
         display: 'flex',
         justifyContent: 'space-between'
     },
-    navLinkStyle: {
-        color: '#F6F7FB',
-        textDecoration: 'none',
-        display: 'block',
-        cursor: 'pointer'
-    },
-    logInButton: {
-        marginRight: '10px'
-    },
     link: {
         textDecoration: 'none', 
         color: "#F6F7FB",
-        cursor: 'pointer'
+        cursor: 'pointer',
     }
 }))
 
@@ -79,10 +65,10 @@ const DashBoard = observer(() => {
             <div className={classes.overlay} />
             <Toolbar className={classes.navBarContainer}>
                     <div className={classes.leftNavBar}>                    
-                    <Link href="/" className={[classes.leftNavBarText, classes.link]}>MindCards</Link> 
+                    <NavLink to="/" className={classes.link}>MindCards</NavLink> 
                     <img src={appIcon} height={30} alt="Bank App Icon"></img>
                     <div>{user.user.first_name}</div>
-                    <Link style={{paddingLeft: '50px'}} href="/cardSet" className={[classes.leftNavBarText, classes.link]}>Your library</Link>           
+                    <NavLink style={{paddingLeft: '50px'}} to="/cardSet" className={classes.link}>Your library</NavLink>           
 
                     </div>   
                     {authBlock}
