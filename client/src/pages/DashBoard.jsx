@@ -3,6 +3,8 @@ import { AppBar, Container, Toolbar, Button, makeStyles, Link} from '@material-u
 import RegistrationForm from "./RegistrationForm.jsx";
 import LoginForm from "./LoginForm";
 import appIcon from '../images/cards.png';
+import profileIcon from '../images/user-icon.png';
+import plusIcon from '../images/crosshair-cardset.png';
 import { observer } from 'mobx-react-lite';
 import { Context } from "../index.js";
 import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
@@ -49,7 +51,9 @@ const DashBoard = observer(() => {
          
         authBlock = <div style={{display: "flex"}}>
             <LoginForm />
-            <RegistrationForm />
+            <div style={{marginLeft: '10px'}}>
+                <RegistrationForm/>
+            </div>
         </div>
     } else {
         authBlock =
@@ -65,13 +69,21 @@ const DashBoard = observer(() => {
             <div className={classes.overlay} />
             <Toolbar className={classes.navBarContainer}>
                     <div className={classes.leftNavBar}>                    
-                    <NavLink to="/" className={classes.link}>MindCards</NavLink> 
-                    <img src={appIcon} height={30} alt="Bank App Icon"></img>
-                    <div>{user.user.first_name}</div>
-                    <NavLink style={{paddingLeft: '50px'}} to="/cardSet" className={classes.link}>Your library</NavLink>           
-
-                    </div>   
-                    {authBlock}
+                        <NavLink to="/" className={classes.link}>MindCards</NavLink> 
+                        <img src={appIcon} height={40} alt="Bank App Icon"></img>
+                        <div>{user.user.first_name}</div>
+                        <NavLink style={{paddingLeft: '50px'}} to="/cardSet" className={classes.link}>Your library</NavLink>           
+                    </div> 
+                    <div style={{display: 'flex', alignItems: 'center'}}>
+                        <div style={{marginRight: '50px', display: 'flex', alignItems: 'center'}}>
+                            <img src={profileIcon} height={40} alt="profile App Icon"></img>
+                        </div>
+                        <div style={{marginRight: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#2E3856', borderRadius: '50%', width: '40px', height: '40px'}}>
+                            <img src={plusIcon} height={32} alt="profile App Icon"></img>
+                        </div>
+                        {authBlock}
+                    </div>  
+                    
             </Toolbar>
         </Container>
     </div>

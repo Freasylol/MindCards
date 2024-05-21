@@ -37,6 +37,28 @@ const CardSetItem = observer(({cardSetOrder, message, cardSetObject}) => {
     const {object} = useContext(Context);
     const {user} = useContext(Context);
 
+    let cards = object.cards;
+    let cardSets = object.cardSets;
+    let cardsIndexObject = {};
+    let cardsCountObject = {};
+
+    for (let i = 0; i < cards.length; i++) {
+        let cardSetId = cards[i].cardSetId;
+        let cardId = cards[i].id;
+        cardsIndexObject[cardId] = cardSetId;
+        
+        if (cardsCountObject[cardSetId]) {
+            cardsCountObject[cardSetId] += 1;
+        } else {
+            cardsCountObject[cardSetId] = 1;
+        }
+        console.log(cardSetId);
+        console.log(cardId);
+    }
+
+            // object.setCardSetsCount(cardsCountObject);
+
+
     const handleCardsIndex = async(e) => {
         e.preventDefault();
         let cards = object.cards;
@@ -127,18 +149,18 @@ const CardSetItem = observer(({cardSetOrder, message, cardSetObject}) => {
     let cardSetButtonClasses = classes.btn + ' ' + cardSetOrder.toString();
 
     return (
-        <div className={classes.editableItem}>          
-            <EditableField style={{display: 'inline'}} header={''} text={cardSetObject.name} field={'cardSet'} cardSetIndex={cardSetOrder}></EditableField>
+        <div className={classes.editableItem} style={{backgroundColor: '#2E3856', borderRadius: '40px', height: '300px', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>          
+            {/* <EditableField style={{display: 'inline'}} header={''} text={cardSetObject.name} field={'cardSet'} cardSetIndex={cardSetOrder}></EditableField> */}
+            <div style={{marginTop: '40px', fontSize: '24px'}}>{cardSetObject.name}</div>
             <div>
-                <button className={cardSetButtonClasses} onClick={handleCardsIndex}>CardsIndex</button>
-        
-                <button className={cardSetButtonClasses} onClick={handleDelete}>Delete</button>
-                <button className={cardSetButtonClasses} onClick={handleFavorite}>Favorite</button>
-                <button className={cardSetButtonClasses} onClick={handleView}>View</button>
-                <button className={cardSetButtonClasses} onClick={handleLeaderboard}>LeaderBoard</button>
-                <button className={cardSetButtonClasses} onClick={handleCardSetPass}>Pass</button>
-                <div>{object.cardSetsCount[object.cardSets[cardSetOrder].id]}</div>
-                <div>{object.cards.length}</div>
+                {/* <button style={{display: 'block', marginTop: '40px'}} className={cardSetButtonClasses} onClick={handleCardsIndex}>CardsIndex</button> */}
+                {/* <button className={cardSetButtonClasses} onClick={handleDelete}>Delete</button> */}
+                <button style={{display: 'block', marginTop: '20px'}} className={cardSetButtonClasses} onClick={handleFavorite}>Favorite</button>
+                {/* <button className={cardSetButtonClasses} onClick={handleView}>View</button> */}
+                {/* <button className={cardSetButtonClasses} onClick={handleLeaderboard}>LeaderBoard</button> */}
+                {/* <button className={cardSetButtonClasses} onClick={handleCardSetPass}>Pass</button> */}
+                <div style={{marginTop: '20px'}}>{object.cardSetsCount[object.cardSets[cardSetOrder].id] ? object.cardSetsCount[object.cardSets[cardSetOrder].id] : 0}</div>
+                {/* <div>{object.cards.length}</div> */}
             </div>
     
         </div>

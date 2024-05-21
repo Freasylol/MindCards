@@ -128,6 +128,27 @@ const LoginForm = observer(() => {
             const userLogData = await Axios.get(`http://localhost:3001/api/userLog/findByUserId/${user.user.id}`);
             console.log(userLogData.data);
             object.setUserLog(userLogData.data);
+            let cards = object.cards;
+            let cardSets = object.cardSets;
+            let cardsIndexObject = {};
+            let cardsCountObject = {};
+        
+            for (let i = 0; i < cards.length; i++) {
+                let cardSetId = cards[i].cardSetId;
+                let cardId = cards[i].id;
+                cardsIndexObject[cardId] = cardSetId;
+                
+                if (cardsCountObject[cardSetId]) {
+                    cardsCountObject[cardSetId] += 1;
+                } else {
+                    cardsCountObject[cardSetId] = 1;
+                }
+                console.log(cardSetId);
+                console.log(cardId);
+            }
+
+            object.setCardSetsCount(cardsCountObject);
+
         } catch(error) {
             console.log(error);
         }

@@ -70,9 +70,12 @@ const CardSet = observer(() => {
                     <NavLink to="/createCardSet">
                         <button className={classes.btn}>New CardSet</button>
                     </NavLink>
-                    {object.cardSets.map((cardSet,index) => {
-                        return <CardSetItem key={cardSet.id} cardSetOrder={index} message={'Deposit'} cardSetObject={cardSet}></CardSetItem>
-                    })}
+                    <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gridColumnGap: '10px'}}>
+                        {object.cardSets.map((cardSet,index) => {
+                            return <CardSetItem key={cardSet.id} cardSetOrder={index} message={'Deposit'} cardSetObject={cardSet}></CardSetItem>
+                        })}
+                    </div>
+                  
                 </div>
             </div>
         </div>
