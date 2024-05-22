@@ -156,7 +156,7 @@ const CardSetItem = observer(({cardSetOrder, message, cardSetObject}) => {
                 {/* <button style={{display: 'block', marginTop: '40px'}} className={cardSetButtonClasses} onClick={handleCardsIndex}>CardsIndex</button> */}
                 {/* <button className={cardSetButtonClasses} onClick={handleDelete}>Delete</button> */}
                 <button style={{display: 'block', marginTop: '20px'}} className={cardSetButtonClasses} onClick={handleFavorite}>Favorite</button>
-                {/* <button className={cardSetButtonClasses} onClick={handleView}>View</button> */}
+                <button style={{display: 'block', marginTop: '20px'}} className={cardSetButtonClasses} onClick={handleView}>View</button>
                 {/* <button className={cardSetButtonClasses} onClick={handleLeaderboard}>LeaderBoard</button> */}
                 {/* <button className={cardSetButtonClasses} onClick={handleCardSetPass}>Pass</button> */}
                 <div style={{marginTop: '20px'}}>{object.cardSetsCount[object.cardSets[cardSetOrder].id] ? object.cardSetsCount[object.cardSets[cardSetOrder].id] : 0}</div>

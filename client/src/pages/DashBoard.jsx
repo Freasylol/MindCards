@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
         height: '10vh',
         backgroundColor: '#0A092E',
         color: '#F6F7FB',
-        borderBottom: '1px solid #F6F7FB'
+        borderBottom: '1px solid #000000'
     },
     leftNavBar: {
         display: 'flex',

@@ -4,32 +4,31 @@ import {observer} from 'mobx-react-lite';
 import { makeStyles} from '@material-ui/core';
 import Axios from 'axios';
 import useSharedStyles from "./useSharedStyles";
+import RightArrow from '../images/right-arrow.png';
+import LeftArrow from '../images/left-arrow.png';
 
 const useStyles = makeStyles((theme) => ({
-    signUpButton: {
+    cardDisplay: {
         outline: 'none',
         border: 'none',
-        backgroundColor: '#4255FF',
+        backgroundColor: '#2E3856',
+        fontSize: '40px',
+        color: '#F6F7FB',
         
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
 
         cursor: 'pointer',
-
-        borderRadius: '60px',
-        width: '80vw',
+        
+        width: '100%',
 
         height: '50vh'
-    },
-    signUpButtonText: {
-        color: '#0A092E',
-        fontSize: '24px'
     },
     sliderBtn: {
         outline: 'none',
         border: 'none',
-        backgroundColor: '#4255FF',
+        backgroundColor: '#F6F7FB',
         
         display: 'inline-flex',
         alignItems: 'center',
@@ -37,9 +36,9 @@ const useStyles = makeStyles((theme) => ({
         
         cursor: 'pointer',
 
-        borderRadius: '60px',
-        width: '100px',
-        padding: '20px 20px',  
+        borderRadius: '100%',
+        width: '80px',
+        height: '80px',  
         color: '#fff'  
     }
 }))
@@ -82,13 +81,19 @@ const CardSetViewSlider = observer(({message, cardObject}) => {
     }
     return (
         <div>
-            <button className={classes.signUpButton} onClick={handleContent} style={{marginBottom: '30px'}}>
-                {/* {content} */}
-                {isTask === true ?  object.cards[index].task : object.cards[index].answer}              
-            </button>
+            <div className={sharedClasses.container}>
+                <button className={classes.cardDisplay} onClick={handleContent} style={{marginBottom: '30px'}}>
+                    {isTask === true ?  object.cards[index].task : object.cards[index].answer}              
+                </button>
+            </div>
+           
             <div className={sharedClasses.container} style={{display: 'flex', justifyContent: 'center'}}>
-                <button className={classes.sliderBtn} style={{marginRight: '30px'}} onClick={handlePrev}>Prev</button>
-                <button className={classes.sliderBtn} onClick={handleNext}>Next</button>
+                <button className={classes.sliderBtn} style={{marginRight: '50px'}} onClick={handlePrev}>
+                    <img src={LeftArrow} height={32} alt="" />
+                </button>
+                <button className={classes.sliderBtn} onClick={handleNext}>
+                    <img src={RightArrow} height={32} alt="" />
+                </button>
             </div>
            
         </div>
