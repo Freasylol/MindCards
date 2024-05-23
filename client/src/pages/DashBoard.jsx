@@ -9,6 +9,8 @@ import { observer } from 'mobx-react-lite';
 import { Context } from "../index.js";
 import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
 import { BrowserRouter } from "react-router-dom/cjs/react-router-dom.min.js";
+import { ContextMenuTrigger } from 'react-contextmenu'; 
+import ContextMenu from "../pages/ContextMenu.jsx";
 
 const useStyles = makeStyles((theme) => ({
     title: {
@@ -79,7 +81,12 @@ const DashBoard = observer(() => {
                             <img src={profileIcon} height={40} alt="profile App Icon"></img>
                         </div>
                         <div style={{marginRight: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#2E3856', borderRadius: '50%', width: '40px', height: '40px'}}>
-                            <img src={plusIcon} height={32} alt="profile App Icon"></img>
+                        <ContextMenuTrigger id="my-context-menu">
+                        <img src={plusIcon} height={32} alt="profile App Icon"></img>
+                            {/* <div>Right-click me!</div> */}
+                        </ContextMenuTrigger>
+                        <ContextMenu />
+                            
                         </div>
                         {authBlock}
                     </div>  

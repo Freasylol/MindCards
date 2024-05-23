@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { makeStyles} from '@material-ui/core';
 import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
 import useSharedStyles from './useSharedStyles';
 import DashBoard from './DashBoard';
+import { Context } from '../index';
+import CardSet from './CardSet';
 // import Menu from './Menu';
 
 const useStyles = makeStyles((theme) => ({
@@ -34,7 +36,13 @@ function Main() {
     const classes = useStyles();
     const sharedClasses = useSharedStyles();
 
+    const {user} = useContext(Context);
+
     return (
+        // <div>
+        //      {user.isAuth === true && <CardSet />}
+        // </div>
+       
         <div>
             <DashBoard />
             <div className={sharedClasses.wrapper}>
