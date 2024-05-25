@@ -54,6 +54,9 @@ function Main() {
                         <NavLink className={classes.navLinkStyle} to="/cardSet">My cardsets</NavLink>
                     </button>
                     <button className={classes.btn}>
+                        <NavLink className={classes.navLinkStyle} to="/task">My tasks</NavLink>
+                    </button>
+                    <button className={classes.btn}>
                         <NavLink className={classes.navLinkStyle} to="/cardSetFavorite">My favorite cardsets</NavLink>
                     </button>
                     <button className={classes.btn}>

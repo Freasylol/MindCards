@@ -24,14 +24,14 @@ const Dropdown = observer(() => {
     }
 
     return (
-        <div>
-            <select value={selectedOption} onChange={handleSelectChange}>
-                <option value="">Select Variant</option>
-                {object.bankAccounts.map((bankAccount, index) => (
-                    <option key={index} value={bankAccount.accountId}>{bankAccount.accountId}</option>
-                ))}
-            </select>
-        </div>
+        // <div>
+        //     <select value={selectedOption} onChange={handleSelectChange}>
+        //         <option value="">Select Variant</option>
+        //         {object.bankAccounts.map((bankAccount, index) => (
+        //             <option key={index} value={bankAccount.accountId}>{bankAccount.accountId}</option>
+        //         ))}
+        //     </select>
+        // </div>
     )
 })
 

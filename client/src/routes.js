@@ -4,12 +4,13 @@ import Profile from "./pages/Profile";
 import CardSetCreation from "./pages/CardSetCreation";
 import CardSetPass from "./pages/CardSetPass";
 import CardSetView from "./pages/CardSetView"
-import { CARDSET_ROUTE, MAIN_ROUTE, PROFILE_ROUTE, CREATE_CARDSET_ROUTE, EDIT_CARDSET_ROUTE, CARDSET_PASS_ROUTE, CARDSET_LEADERBOARD, CARDSET_VIEW, CARDSET_FAVORITE, BROWSING_HISTORY, USER_LOG, SEARCH_ROUTE } from "./utils/consts"
+import { CARDSET_ROUTE, MAIN_ROUTE, PROFILE_ROUTE, CREATE_CARDSET_ROUTE, EDIT_CARDSET_ROUTE, CARDSET_PASS_ROUTE, CARDSET_LEADERBOARD, CARDSET_VIEW, CARDSET_FAVORITE, BROWSING_HISTORY, USER_LOG, SEARCH_ROUTE, TASK_ROUTE } from "./utils/consts"
 import CardSetLeaderBoard from "./pages/CardSetLeaderBoard";
 import CardSetFavorite from "./pages/CardSetFavorite";
 import BrowsingHistory from "./pages/BrowsingHistory";
 import UserLog from "./pages/UserLog";
 import Search from "./pages/Search";
+import Task from "./pages/Task";
 
 export const authRoutes = [
     {
@@ -51,7 +52,12 @@ export const authRoutes = [
     {
         path: SEARCH_ROUTE,
         Component: Search
+    },
+    {
+        path: TASK_ROUTE,
+        Component: Task,
     }
+
 ]
 
 export const publicRoutes = [
