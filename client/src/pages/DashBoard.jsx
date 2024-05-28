@@ -77,17 +77,17 @@ const DashBoard = observer(() => {
                         <NavLink style={{paddingLeft: '50px'}} to="/cardSet" className={classes.link}>Your library</NavLink>           
                     </div> 
                     <div style={{display: 'flex', alignItems: 'center'}}>
-                        <div style={{marginRight: '50px', display: 'flex', alignItems: 'center'}}>
+                        {/* <div style={{marginRight: '50px', display: 'flex', alignItems: 'center'}}>
                             <img src={profileIcon} height={40} alt="profile App Icon"></img>
                         </div>
                         <div style={{marginRight: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#2E3856', borderRadius: '50%', width: '40px', height: '40px'}}>
                         <ContextMenuTrigger id="my-context-menu">
                         <img src={plusIcon} height={32} alt="profile App Icon"></img>
                             {/* <div>Right-click me!</div> */}
-                        </ContextMenuTrigger>
-                        <ContextMenu />
+                        {/* </ContextMenuTrigger>
+                        <ContextMenu /> */}
                             
-                        </div>
+                        {/* </div> */}
                         {authBlock}
                     </div>  
                     

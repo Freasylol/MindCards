@@ -5,7 +5,8 @@ import useSharedStyles from './useSharedStyles';
 import DashBoard from './DashBoard';
 import { Context } from '../index';
 import CardSet from './CardSet';
-// import Menu from './Menu';
+import NonLogin from './NonLogin';
+import Menu from './Menu';
 
 const useStyles = makeStyles((theme) => ({
     navLinkStyle: {
@@ -39,37 +40,9 @@ function Main() {
     const {user} = useContext(Context);
 
     return (
-        // <div>
-        //      {user.isAuth === true && <CardSet />}
-        // </div>
-       
         <div>
-            <DashBoard />
-            <div className={sharedClasses.wrapper}>
-                <div className={sharedClasses.container}>
-                    <button className={classes.btn}>
-                        <NavLink className={classes.navLinkStyle} to="/profile">My profile</NavLink>
-                    </button>
-                    <button className={classes.btn}>
-                        <NavLink className={classes.navLinkStyle} to="/cardSet">My cardsets</NavLink>
-                    </button>
-                    <button className={classes.btn}>
-                        <NavLink className={classes.navLinkStyle} to="/task">My tasks</NavLink>
-                    </button>
-                    <button className={classes.btn}>
-                        <NavLink className={classes.navLinkStyle} to="/cardSetFavorite">My favorite cardsets</NavLink>
-                    </button>
-                    <button className={classes.btn}>
-                        <NavLink className={classes.navLinkStyle} to="/browsingHistory">Browsing History</NavLink> 
-                    </button>
-                    <button className={classes.btn}>
-                        <NavLink className={classes.navLinkStyle} to="/userLog">User Logs</NavLink> 
-                    </button>
-                    <button className={classes.btn}>
-                        <NavLink className={classes.navLinkStyle} to="/search">Search</NavLink> 
-                    </button>
-                </div>
-            </div>     
+             {user.isAuth === true && <Menu />}
+             {user.isAuth === false && <NonLogin />}
         </div>
                    
     )

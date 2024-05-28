@@ -8,6 +8,7 @@ import Axios from 'axios';
 import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
 import useSharedStyles from './useSharedStyles';
 import DashBoard from './DashBoard';
+import TaskSetItem from './TaskSetItem';
 
 const useStyles = makeStyles((theme) => ({ 
     btn: {
@@ -61,6 +62,17 @@ const Task = observer(() => {
     return (
         <div>
             <DashBoard />
+            <div className={sharedClasses.wrapper}>
+                <div className={sharedClasses.container}>
+                    <button className={classes.btn}>New taskSet</button>
+                    <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gridColumnGap: '10px'}}>
+                        
+                        {object.taskSets.map((cardSet,index) => {
+                            return <TaskSetItem key={cardSet.id} taskSetOrder={index} taskSetObject={cardSet}></TaskSetItem>
+                        })}
+                    </div>
+                </div>
+            </div>
         </div>
 
         

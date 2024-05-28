@@ -95,6 +95,50 @@ const LoginForm = observer(() => {
 
     const [token, setToken] = useState('');
 
+    const countCardSets = async () => {
+        let cards = object.cards;
+            let cardSets = object.cardSets;
+            let cardsIndexObject = {};
+            let cardsCountObject = {};
+        
+            for (let i = 0; i < cards.length; i++) {
+                let cardSetId = cards[i].cardSetId;
+                let cardId = cards[i].id;
+                cardsIndexObject[cardId] = cardSetId;
+                
+                if (cardsCountObject[cardSetId]) {
+                    cardsCountObject[cardSetId] += 1;
+                } else {
+                    cardsCountObject[cardSetId] = 1;
+                }
+                console.log(cardSetId);
+                console.log(cardId);
+            }
+            object.setCardSetsCount(cardsCountObject);
+    }
+
+    const countTaskSets = async () => {
+        let tasks = object.tasks;
+        let taskSets = object.cardSets;
+        let taskSetsIndexObject = {};
+        let taskSetsCountObject = {};
+        
+            for (let i = 0; i < tasks.length; i++) {
+                let taskSetId = tasks[i].taskSetId;
+                let taskId = tasks[i].id;
+                taskSetsIndexObject[taskId] = taskSetId;
+                
+                if (taskSetsCountObject[taskSetId]) {
+                    taskSetsCountObject[taskSetId] += 1;
+                } else {
+                    taskSetsCountObject[taskSetId] = 1;
+                }
+                console.log(taskSetId);
+                console.log(taskId);
+            }
+            object.setTaskSetsCount(taskSetsCountObject);
+    }
+
     const submitLogin = async (e) => {
         e.preventDefault();
         try {
@@ -128,26 +172,9 @@ const LoginForm = observer(() => {
             const userLogData = await Axios.get(`http://localhost:3001/api/userLog/findByUserId/${user.user.id}`);
             console.log(userLogData.data);
             object.setUserLog(userLogData.data);
-            let cards = object.cards;
-            let cardSets = object.cardSets;
-            let cardsIndexObject = {};
-            let cardsCountObject = {};
-        
-            for (let i = 0; i < cards.length; i++) {
-                let cardSetId = cards[i].cardSetId;
-                let cardId = cards[i].id;
-                cardsIndexObject[cardId] = cardSetId;
-                
-                if (cardsCountObject[cardSetId]) {
-                    cardsCountObject[cardSetId] += 1;
-                } else {
-                    cardsCountObject[cardSetId] = 1;
-                }
-                console.log(cardSetId);
-                console.log(cardId);
-            }
-
-            object.setCardSetsCount(cardsCountObject);
+            countCardSets();
+            countTaskSets();
+            
 
         } catch(error) {
             console.log(error);

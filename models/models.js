@@ -35,6 +35,20 @@ const CardSet = sequelize.define('card_set', {
     description: {type: DataTypes.STRING},
 })
 
+const TaskSet = sequelize.define('task_set', {
+    id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    name: {type: DataTypes.STRING},
+    theme: {type: DataTypes.STRING},
+    description: {type: DataTypes.STRING},
+})
+
+const Task = sequelize.define('task', {
+    id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    condition: {type: DataTypes.STRING},
+    task: {type: DataTypes.STRING},
+    answer: {type: DataTypes.STRING},
+})
+
 const Category = sequelize.define('category', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     name: {type: DataTypes.STRING}  
@@ -55,6 +69,10 @@ const FavoriteCardSet = sequelize.define('favorite_card_set', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
 })
 
+const FavoriteTaskSet = sequelize.define('favorite_task_set', {
+    id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+})
+
 Role.hasMany(User);
 User.belongsTo(Role);
 
@@ -70,6 +88,9 @@ BrowsingHistory.belongsTo(User);
 User.hasMany(CardSet);
 CardSet.belongsTo(User);
 
+User.hasMany(TaskSet);
+TaskSet.belongsTo(User);
+
 CardSet.hasMany(BrowsingHistory);
 BrowsingHistory.belongsTo(CardSet);
 
@@ -82,11 +103,20 @@ UserRate.belongsTo(User);
 CardSet.hasMany(Card);
 Card.belongsTo(CardSet);
 
+TaskSet.hasMany(Task);
+Task.belongsTo(TaskSet);
+
 User.hasMany(FavoriteCardSet);
 FavoriteCardSet.belongsTo(User);
 
 CardSet.hasMany(FavoriteCardSet);
 FavoriteCardSet.belongsTo(CardSet);
+
+User.hasMany(FavoriteTaskSet);
+FavoriteTaskSet.belongsTo(User);
+
+TaskSet.hasMany(FavoriteTaskSet);
+FavoriteTaskSet.belongsTo(TaskSet);
 
 module.exports = {
     User, 
@@ -98,5 +128,8 @@ module.exports = {
     Category,
     UserRate,
     Card,
-    FavoriteCardSet
+    FavoriteCardSet,
+    Task,
+    TaskSet,
+    FavoriteTaskSet
 }

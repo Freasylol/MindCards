@@ -142,7 +142,7 @@ const RegistrationForm = observer(() => {
                         required>
                     </input>
                 </div>
-                <div class="sign-up__form-item">
+                {/* <div class="sign-up__form-item">
                     <label className={classes.singUpLabel}>Date Of Birth</label>
                     <input 
                         type="text"
@@ -152,8 +152,8 @@ const RegistrationForm = observer(() => {
                         pattern="^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$" 
                         required>
                     </input>
-                </div>
-                <div class="sign-up__form-item">
+                </div> */}
+                {/* <div class="sign-up__form-item">
                     <label className={classes.singUpLabel}>Passport ID</label>
                     <input 
                         type="text"
@@ -163,7 +163,7 @@ const RegistrationForm = observer(() => {
                         pattern="^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$" 
                         required>
                     </input>
-                </div>
+                </div> */}
                 <div class="sign-up__form-item">
                     <label className={classes.singUpLabel}>Email</label>
                     <input  

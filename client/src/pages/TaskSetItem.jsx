@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-const CardSetItem = observer(({cardSetOrder, cardSetObject}) => {
+const CardSetItem = observer(({taskSetOrder, taskSetObject}) => {
     const classes = useStyles();
 
     const history = useHistory();
@@ -56,8 +56,6 @@ const CardSetItem = observer(({cardSetOrder, cardSetObject}) => {
         console.log(cardId);
     }
 
-            // object.setCardSetsCount(cardsCountObject);
-
 
     const handleCardsIndex = async(e) => {
         e.preventDefault();
@@ -80,17 +78,6 @@ const CardSetItem = observer(({cardSetOrder, cardSetObject}) => {
             console.log(cardId);
         }
 
-        // Object.keys(cardsIndexObject).map((item) => {
-            
-        // })
-
-        // cardsIndexObject.filter((item) => {
-            
-        // })
-
-        // for (const key in cardsIndexObject) {
-        //     cardsIndexObject[key] = 
-        // }
         console.log(cardsCountObject);
         object.setCardSetsCount(cardsCountObject);
 
@@ -100,26 +87,26 @@ const CardSetItem = observer(({cardSetOrder, cardSetObject}) => {
     const handleCardSetPass = async(e) => {
         e.preventDefault();
         console.log(e.target.className);
-        const cardData = await Axios.get(`http://localhost:3001/api/card/findByCardSet/${cardSetObject.id}`)
+        const cardData = await Axios.get(`http://localhost:3001/api/card/findByCardSet/${taskSetObject.id}`)
         console.log(cardData.data);
         object.setCards(cardData.data);
-        object.setCurrentCardSetId(cardSetObject.id);
+        object.setCurrentCardSetId(taskSetObject.id);
         history.push('/cardSetPass');
     }
 
     const handleView = async(e) => {
         e.preventDefault();
         console.log(e.target.className);
-        const cardData = await Axios.get(`http://localhost:3001/api/card/findByCardSet/${cardSetObject.id}`)
+        const cardData = await Axios.get(`http://localhost:3001/api/card/findByCardSet/${taskSetObject.id}`)
         console.log(cardData.data);
         object.setCards(cardData.data);
-        object.setCurrentCardSetId(cardSetObject.id);
+        object.setCurrentCardSetId(taskSetObject.id);
         history.push('/cardSetView');
     }
 
     const handleLeaderboard = async(e) => {
         e.preventDefault();
-        const userRateData = await Axios.get(`http://localhost:3001/api/userRate/findByCardSet/${cardSetObject.id}`);
+        const userRateData = await Axios.get(`http://localhost:3001/api/userRate/findByCardSet/${taskSetObject.id}`);
         userRateData.data.sort((a, b) => b.grade - a.grade);
         console.log(userRateData.data);
         object.setUserRates(userRateData.data);
@@ -146,23 +133,19 @@ const CardSetItem = observer(({cardSetOrder, cardSetObject}) => {
         })
     }
 
-    let cardSetButtonClasses = classes.btn + ' ' + cardSetOrder.toString();
+    let cardSetButtonClasses = classes.btn + ' ' + taskSetOrder.toString();
 
     return (
         <div className={classes.editableItem} style={{backgroundColor: '#2E3856', borderRadius: '40px', height: '300px', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>          
-            {/* <EditableField style={{display: 'inline'}} header={''} text={cardSetObject.name} field={'cardSet'} cardSetIndex={cardSetOrder}></EditableField> */}
-            <div style={{marginTop: '40px', fontSize: '24px'}}>{cardSetObject.name}</div>
+            <div style={{marginTop: '40px', fontSize: '24px'}}>{taskSetObject.name}</div>
+            <div style={{marginTop: '40px', fontSize: '24px'}}>{taskSetObject.description}</div>
+            <div style={{marginTop: '40px', fontSize: '24px'}}>{taskSetObject.theme}</div>
             <div>
-                {/* <button style={{display: 'block', marginTop: '40px'}} className={cardSetButtonClasses} onClick={handleCardsIndex}>CardsIndex</button> */}
-                {/* <button className={cardSetButtonClasses} onClick={handleDelete}>Delete</button> */}
-                <button style={{display: 'block', marginTop: '20px'}} className={cardSetButtonClasses} onClick={handleFavorite}>Favorite</button>
-                <button style={{display: 'block', marginTop: '20px'}} className={cardSetButtonClasses} onClick={handleView}>View</button>
-                {/* <button className={cardSetButtonClasses} onClick={handleLeaderboard}>LeaderBoard</button> */}
-                {/* <button className={cardSetButtonClasses} onClick={handleCardSetPass}>Pass</button> */}
-                <div style={{marginTop: '20px'}}>{object.cardSetsCount[object.cardSets[cardSetOrder].id] ? object.cardSetsCount[object.cardSets[cardSetOrder].id] : 0}</div>
-                {/* <div>{object.cards.length}</div> */}
+                {/* <button style={{display: 'block', marginTop: '20px'}} className={cardSetButtonClasses} onClick={handleFavorite}>Favorite</button>
+                <button style={{display: 'block', marginTop: '20px'}} className={cardSetButtonClasses} onClick={handleView}>View</button> */}
+                <div style={{marginTop: '20px'}}>{object.taskSetsCount[object.cardSets[taskSetOrder].id] ? object.taskSetsCount[object.taskSets[taskSetOrder].id] : 0}</div>
+
             </div>
-    
         </div>
     )
 })

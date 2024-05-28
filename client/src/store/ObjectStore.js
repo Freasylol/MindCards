@@ -2,13 +2,6 @@ import {makeAutoObservable} from 'mobx';
 
 export default class DeviceStore {
     constructor() {
-        this._depositTypes = [
-            {id: 1, minSum: 100 , percent: 4}
-        ]
-        this._creditTypes = [
-            {id: 1, minSum: 100, minTerm: 3, percent: 9, name: 'Annuity'},
-            {id: 2, minSum: 100, minTerm: 3, percent: 9, name: 'Differential'}
-        ]
         this._cardSets = [
         ];
         this._cardSetsBuffer = [
@@ -16,13 +9,35 @@ export default class DeviceStore {
         this._cards = [
         ];
         this._cardSetsCount = {};
-        this._tasks = {};
+        this._taskSetsCount = {};
+        this._tasks = [
+            {id: 1, userId: 2, taskSetId: 1, condition: 'Переведите следующее предложение на русский язык ', task: 'I love listening to classical music in the evening', answer: 'Я люблю слушать классическую музыку вечером'},
+            {id: 2, userId: 2, taskSetId: 1, condition: 'Переведите следующее предложение на русский язык ', task: 'She plays the piano beautifully', answer: 'Она прекрасно играет на пианино.'}
+        ];
+        this._taskSets = [
+            {id: 1, name: 'testTaskSet', theme: 'Music', description: 'testTaskSet description'},
+            {id: 2, name: 'bebra', theme: 'bebra', description: 'bebra description'},
+
+        ]
         this._currentCardSetId = 1;
         this._userRates = [];
         this._favoriteCardSets = [];
+        this._favoriteTaskSets = [];
         this._browsingHistory = [];
         this._userLog = [];
         makeAutoObservable(this)
+    }
+
+    setTaskSetsCount(taskSetsCount) {
+        this._taskSetsCount = taskSetsCount;
+    }
+    
+    setFavoriteTaskSets(favoriteTaskSets) {
+        this._favoriteTaskSets = favoriteTaskSets;
+    }
+
+    setTaskSets(taskSets) {
+        this._taskSets = taskSets;
     }
 
     setTasks(tasks) {
@@ -63,6 +78,18 @@ export default class DeviceStore {
 
     setCardSetsBuffer(cardSetsBuffer) {
         this._cardSetsBuffer = cardSetsBuffer;
+    }
+
+    get taskSetsCount() {
+        return this._taskSetsCount;
+    }
+
+    get favoriteTaskSets() {
+        return this._favoriteTaskSets;
+    }
+
+    get taskSets() {
+        return this._taskSets;
     }
 
     get tasks() {

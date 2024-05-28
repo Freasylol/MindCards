@@ -31,34 +31,6 @@ const useStyles = makeStyles((theme) => ({
 const CardSet = observer(() => {
     const classes = useStyles();
     const sharedClasses = useSharedStyles();
-
-    const [content, setContent] = useState('');
-    const [contentState, setContentState] = useState('');
-
-    // setContentState('question');
-
-    // const start = async() => {
-    //     setContent('ball');
-    //     setContentState('question')
-    // }
-
-    // start();
-
-
-    const handleClick = async(e) => {
-        console.log(contentState);
-        if (contentState === 'answer') {
-            setContent('ball');
-            setContentState('answer');
-        } else if (contentState === '' || contentState === 'question') {
-            setContent('мяч');
-            setContentState('question');
-        }  
-    }
-
-    const test = async(e) => {
-        window.location.replace('http://localhost:3000');
-    }
  
     const {object} = useContext(Context);
 
@@ -72,7 +44,7 @@ const CardSet = observer(() => {
                     </NavLink>
                     <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gridColumnGap: '10px'}}>
                         {object.cardSets.map((cardSet,index) => {
-                            return <CardSetItem key={cardSet.id} cardSetOrder={index} message={'Deposit'} cardSetObject={cardSet}></CardSetItem>
+                            return <CardSetItem key={cardSet.id} cardSetOrder={index} cardSetObject={cardSet}></CardSetItem>
                         })}
                     </div>
                   
